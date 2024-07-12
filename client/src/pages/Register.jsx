@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-const SignUp = () => {
+const Register = () => {
     const [form, setForm] = useState({
         username: '',
         email: '',
@@ -81,4 +81,4 @@ const SignUp = () => {
     );
 };
 
-export default SignUp;
+export default Register;
