@@ -2,7 +2,6 @@ import express from 'express';
 import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import bcrypt from 'bcrypt';
 import cors from 'cors';
 
 const app = express();
@@ -18,6 +17,23 @@ const connect = async () => {
         console.log(error);
     }
 }
+
+app.use(express.json());
+app.use(cookieParser());
+
+//CORS Config
+const corsOptions = {
+    origin: "http://localhost:5173",
+    credentials: true,
+}
+app.use(cors(corsOptions));
+
+app.use((err, req, res, next) => {
+    const errStatus = err.status || 500
+    const errMessage = err.message || "Something went wrong"
+
+    return next(createError(errStatus, errMessage))
+});
 
 app.listen(8800, () => {
     connect();
