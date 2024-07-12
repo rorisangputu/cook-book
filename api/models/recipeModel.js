@@ -10,13 +10,13 @@ const recipeSchema = new Schema({
         type: String,
         required: true
     },
-    ingredients: {
-        type: [String],
-        required: true
-    },
-    instructions: {
+    content: {
         type: String,
         required: true
+    },
+    img: {
+        type: String,
+
     },
     cuisine: {
         type: String,
@@ -24,9 +24,9 @@ const recipeSchema = new Schema({
 
     },
     category: {
-        type: [String],
+        type: String,
         required: true,
-        validate: [arrayLimit, '{PATH} must have at least one category']
+
     },
     difficulty: {
         type: Number,
@@ -38,8 +38,5 @@ const recipeSchema = new Schema({
     }]
 });
 
-function arrayLimit(val) {
-    return val.length > 0;
-}
 
 module.exports = mongoose.model('Recipe', recipeSchema);

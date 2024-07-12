@@ -1,14 +1,15 @@
 // import { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 // import { UserContext } from "../UserContext";
+import { LuCookie } from "react-icons/lu";
 
 const Nav = () => {
 
     return (
         <div className="w-full shadow-md h-10">
             <div className="w-[90%] md:container mx-auto flex items-center justify-between my-3">
-                <div className="">
-                    <h1 className="text-[20px] font-semibold">Cook Book</h1>
+                <div className="flex items-center">
+                    <LuCookie className=" h-7 w-7" />
                 </div>
                 <div className="flex ">
 

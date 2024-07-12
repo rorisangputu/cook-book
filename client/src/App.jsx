@@ -4,6 +4,7 @@ import Nav from './components/Nav'
 import Register from './pages/Register'
 import Login from './pages/Login';
 import Recipe from './pages/Recipe';
+import AddRecipe from './pages/AddRecipe';
 function App() {
   return (
     <>
@@ -20,6 +21,9 @@ function App() {
         } />
         <Route path={'/recipe/:id'} element={
           <Recipe />
+        } />
+        <Route path={'/addrecipe'} element={
+          <AddRecipe />
         } />
 
       </Routes>
