@@ -27,12 +27,12 @@ const formats = [
     'header', 'bold', 'italic', 'underline', 'strike', 'blockquote',
     'list', 'bullet', 'indent', 'link', 'image'
 ];
-const Editor = ({ name, onChange }) => {
+const Editor = ({ value, onChange }) => {
 
     return (
         <div>
             <ReactQuill className=''
-                name={name}
+                value={value}
                 modules={modules} formats={formats}
                 onChange={onChange} />
         </div>
