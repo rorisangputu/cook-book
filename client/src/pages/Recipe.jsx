@@ -2,6 +2,8 @@ import foodpic from '../assets/foodpic.jpg'
 import { IoMdTime } from "react-icons/io";
 import { BsBarChart } from "react-icons/bs";
 import { RiFireLine } from "react-icons/ri";
+import { FaRegBookmark } from "react-icons/fa6";
+import { FiShare } from "react-icons/fi";
 import Review from '../components/Review';
 
 const Recipe = () => {
@@ -12,9 +14,16 @@ const Recipe = () => {
                     <img src={foodpic} alt="" className='rounded-tl-2xl rounded-tr-2xl' />
                 </div>
                 <div className="my-2 mx-4">
-                    <div className=''>
-                        <h1 className="text-[25px]">Shakshuka</h1>
-                        <p className="text-xs">By Melissa Brown</p>
+                    <div className='flex justify-between items-center'>
+                        <div>
+                            <h1 className="text-[25px]">Shakshuka</h1>
+                            <p className="text-xs">By Melissa Brown</p>
+                        </div>
+                        <div className='flex gap-5'>
+                            <FaRegBookmark />
+                            <FiShare />
+                        </div>
+
                     </div>
                     <div className="flex gap-3 my-3 text-[#737373]">
                         <span className='flex gap-1 items-center'>
