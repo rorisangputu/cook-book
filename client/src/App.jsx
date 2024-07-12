@@ -3,6 +3,7 @@ import Home from './pages/Home';
 import Nav from './components/Nav'
 import Register from './pages/Register'
 import Login from './pages/Login';
+import Recipe from './pages/Recipe';
 function App() {
   return (
     <>
@@ -16,6 +17,9 @@ function App() {
         } />
         <Route path={'/login'} element={
           <Login />
+        } />
+        <Route path={'/recipe/:id'} element={
+          <Recipe />
         } />
 
       </Routes>
