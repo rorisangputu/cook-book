@@ -15,3 +15,29 @@ export const register = async (req, res, next) => {
         console.log(error)
     }
 }
+export const login = async (req, res, next) => {
+    try {
+        const hash = bcrypt.hashSync(req.body.password, 7);
+        const newUser = new User({
+            ...req.body,
+            password: hash
+        });
+
+        res.send(newUser);
+    } catch (error) {
+        console.log(error)
+    }
+}
+export const logout = async (req, res, next) => {
+    try {
+        const hash = bcrypt.hashSync(req.body.password, 7);
+        const newUser = new User({
+            ...req.body,
+            password: hash
+        });
+
+        res.send(newUser);
+    } catch (error) {
+        console.log(error)
+    }
+}
