@@ -6,6 +6,7 @@ import upload from "../utils/upload.js";
 import newRequest from "../utils/newRequest.js";
 
 const AddRecipe = () => {
+
     const [file, setFile] = useState([]);
     const [content, setContent] = useState('');
     const [user, setUser] = useState({
@@ -18,7 +19,15 @@ const AddRecipe = () => {
         difficulty: ""
     });
 
+    const [redirect, setRedirect] = useState(false);
+
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (redirect) {
+            navigate('/');
+        }
+    }, [redirect, navigate]);
 
     const handleChange = (e) => {
         setUser((prev) => {
@@ -51,11 +60,13 @@ const AddRecipe = () => {
                 ...user,
                 img: url, content: text
             });
-            navigate("/")
+            setRedirect(true)
         } catch (err) {
             console.log(err);
         }
     };
+
+
 
     return (
         <div className='w-full'>

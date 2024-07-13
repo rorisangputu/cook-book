@@ -10,7 +10,7 @@ function App() {
     <>
       <Nav />
       <Routes>
-        <Route index element={
+        <Route path={'/'} element={
           <Home />
         } />
         <Route path={'/register'} element={

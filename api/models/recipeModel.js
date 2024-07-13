@@ -29,13 +29,10 @@ const recipeSchema = new Schema({
 
     },
     difficulty: {
-        type: Number,
+        type: String,
         required: true,
     },
-    reviews: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review'
-    }]
+
 });
 
 
