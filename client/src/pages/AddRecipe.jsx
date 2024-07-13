@@ -9,7 +9,7 @@ const AddRecipe = () => {
 
     const [file, setFile] = useState([]);
     const [content, setContent] = useState('');
-    const [user, setUser] = useState({
+    const [recipe, setRecipe] = useState({
         name: "",
         desc: "",
         content: "",
@@ -30,7 +30,7 @@ const AddRecipe = () => {
     }, [redirect, navigate]);
 
     const handleChange = (e) => {
-        setUser((prev) => {
+        setRecipe((prev) => {
             return { ...prev, [e.target.name]: e.target.value };
         });
 
@@ -57,7 +57,7 @@ const AddRecipe = () => {
         const text = content
         try {
             await newRequest.post("recipes/createRecipe", {
-                ...user,
+                ...recipe,
                 img: url, content: text
             });
             setRedirect(true)

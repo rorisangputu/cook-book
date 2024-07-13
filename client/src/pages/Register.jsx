@@ -1,23 +1,52 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'; // Correct import
+import upload from "../utils/upload.js";
+import newRequest from "../utils/newRequest.js";
 
 const Register = () => {
+    const [file, setFile] = useState([]);
     const [form, setForm] = useState({
         username: '',
         email: '',
-        password: ''
+        password: '',
+        img: ''
     });
 
+    const [redirect, setRedirect] = useState(false);
+
+    const navigate = useNavigate();
+
+    //Redirect
+    useEffect(() => {
+        if (redirect) {
+            navigate('/');
+        }
+    }, [redirect, navigate]);
+
+    //handles inputs
     const handleChange = (e) => {
         setForm({
             ...form,
             [e.target.name]: e.target.value
         });
+
+        console.log(form);
     };
 
-    const handleSubmit = (e) => {
+    //Handles file 
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        console.log("Selected file:", selectedFile);
+        setFile(selectedFile);
+
+    };
+
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        //const url = await upload(file);
         // Here you can add the logic to submit the form data to your backend
         console.log('Form submitted:', form);
+        //setRedirect(true)
     };
 
     return (
@@ -34,7 +63,6 @@ const Register = () => {
                             id="username"
                             type="text"
                             name="username"
-                            value={form.username}
                             onChange={handleChange}
                             required
                         />
@@ -45,10 +73,8 @@ const Register = () => {
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="email"
                             type="email"
                             name="email"
-                            value={form.email}
                             onChange={handleChange}
                             required
                         />
@@ -59,10 +85,9 @@ const Register = () => {
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline"
-                            id="password"
+
                             type="password"
                             name="password"
-                            value={form.password}
                             onChange={handleChange}
                             required
                         />
@@ -73,11 +98,9 @@ const Register = () => {
                         </label>
                         <input
                             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                            id="username"
                             type="file"
                             name="img"
-                            value={form.username}
-                            onChange={handleChange}
+                            onChange={handleFileChange}
                             required
                         />
                     </div>
