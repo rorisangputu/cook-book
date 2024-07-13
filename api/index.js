@@ -4,6 +4,9 @@ import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 
+//Routes
+import recipeRoutes from './routes/recipeRoute.js'
+
 const app = express();
 dotenv.config();
 
@@ -28,12 +31,14 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-app.use((err, req, res, next) => {
-    const errStatus = err.status || 500
-    const errMessage = err.message || "Something went wrong"
+app.use("/recipes", recipeRoutes)
 
-    return next(createError(errStatus, errMessage))
-});
+// app.use((err, req, res, next) => {
+//     const errStatus = err.status || 500
+//     const errMessage = err.message || "Something went wrong"
+
+//     return next(createError(errStatus, errMessage))
+// });
 
 app.listen(8800, () => {
     connect();

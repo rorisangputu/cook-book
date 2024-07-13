@@ -1,4 +1,4 @@
-import { useState, } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'; // Correct import
 import 'react-quill/dist/quill.snow.css';
 import Editor from '../components/Editor';
@@ -6,8 +6,8 @@ import upload from "../utils/upload.js";
 import newRequest from "../utils/newRequest.js";
 
 const AddRecipe = () => {
-    const [file, setFile] = useState(null);
-    //const [content, setContent] = useState('');
+    const [file, setFile] = useState([]);
+    const [content, setContent] = useState('');
     const [user, setUser] = useState({
         name: "",
         desc: "",
@@ -25,18 +25,31 @@ const AddRecipe = () => {
             return { ...prev, [e.target.name]: e.target.value };
         });
 
-        console.log(user)
+
     };
+
+    // useEffect(() => {
+    //     console.log("File state updated:", file);
+    // }, [file]);
+
+    const handleFileChange = (e) => {
+        const selectedFile = e.target.files[0];
+        console.log("Selected file:", selectedFile);
+        setFile(selectedFile);
+
+    };
+
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         const url = await upload(file);
+        const text = content
         try {
-            await newRequest.post("/auth/register", {
+            await newRequest.post("recipes/createRecipe", {
                 ...user,
-                img: url,
+                img: url, content: text
             });
             navigate("/")
         } catch (err) {
@@ -93,11 +106,11 @@ const AddRecipe = () => {
                         <input
                             type="file"
                             className='p-2 border rounded-lg border-[#a3a3a3]'
-                            onChange={e => setFile(e.target.file[0])}
+                            onChange={handleFileChange}
                         />
                     </div>
                     <p className='text-[#5a5a5a] text-sm'>Add ingredients and instructions below:</p>
-                    <Editor name='content' onChange={handleChange} />
+                    <Editor value={content} onChange={setContent} />
                     <button className='bg-[#171717] text-white h-10 cursor-pointer rounded-lg'>Create Recipe</button>
                 </form>
             </div>
