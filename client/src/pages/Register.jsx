@@ -5,7 +5,7 @@ import newRequest from "../utils/newRequest.js";
 
 const Register = () => {
     const [file, setFile] = useState([]);
-    const [form, setForm] = useState({
+    const [user, setUser] = useState({
         username: '',
         email: '',
         password: '',
@@ -25,12 +25,12 @@ const Register = () => {
 
     //handles inputs
     const handleChange = (e) => {
-        setForm({
-            ...form,
+        setUser({
+            ...user,
             [e.target.name]: e.target.value
         });
 
-        console.log(form);
+        console.log(user);
     };
 
     //Handles file 
@@ -43,9 +43,17 @@ const Register = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        //const url = await upload(file);
-        // Here you can add the logic to submit the form data to your backend
-        console.log('Form submitted:', form);
+        const url = await upload(file);
+        try {
+            await newRequest.post('auth/register', {
+                ...user,
+                img: url
+            })
+            setRedirect(true)
+        } catch (error) {
+            console.log(error)
+        }
+
         //setRedirect(true)
     };
 

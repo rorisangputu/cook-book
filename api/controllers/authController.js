@@ -3,17 +3,20 @@ import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
 export const register = async (req, res, next) => {
-    try {
-        const hash = bcrypt.hashSync(req.body.password, 7);
-        const newUser = new User({
-            ...req.body,
-            password: hash
-        });
 
-        res.send(newUser);
-    } catch (error) {
-        console.log(error)
-    }
+    console.log(req.body);
+
+    // try {
+    //     const hash = bcrypt.hashSync(req.body.password, 7);
+    //     const newUser = new User({
+    //         ...req.body,
+    //         password: hash
+    //     });
+
+    //     res.send(newUser);
+    // } catch (error) {
+    //     console.log(error)
+    // }
 }
 export const login = async (req, res, next) => {
     try {
