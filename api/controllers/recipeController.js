@@ -14,6 +14,7 @@ export const createRecipe = async (req, res) => {
     }
 }
 export const getRecipes = async (req, res, next) => {
-    console.log(req.body)
-    const newRecipe = new Recipe({})
+
+    const recipes = await Recipe.find();
+    res.send(recipes);
 }
