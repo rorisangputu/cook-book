@@ -5,12 +5,11 @@ const RecipeList = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8800/recipes/').then(res => {
-            res.json().then(recipes => {
-                setRecipes(recipes)
-            })
-        })
-    })
+        fetch('http://localhost:8800/recipes')
+            .then(res => res.json())
+            .then(data => setRecipes(data))
+            .catch(err => console.error("Error fetching recipes:", err));
+    }, []);
 
     return (
         <div className='w-full grid grid-cols-2 md:grid-cols-3 gap-7 items-center'>
