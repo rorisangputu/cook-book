@@ -25,14 +25,7 @@ const userSchema = new Schema({
         type: String,
         required: false
     },
-    likedRecipes: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Recipe'
-    }],
-    followedAccounts: [{
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User'
-    }],
+
 
 
 }, {

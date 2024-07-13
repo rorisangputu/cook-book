@@ -3,9 +3,11 @@ import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
+import createError from './utils/createError.js';
 
 //Routes
 import recipeRoutes from './routes/recipeRoute.js'
+import authRoutes from './routes/authRoutes.js'
 
 const app = express();
 dotenv.config();
@@ -31,14 +33,15 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-app.use("/recipes", recipeRoutes)
+app.use("/recipes", recipeRoutes);
+app.use("/auth", authRoutes);
 
-// app.use((err, req, res, next) => {
-//     const errStatus = err.status || 500
-//     const errMessage = err.message || "Something went wrong"
+app.use((err, req, res, next) => {
+    const errStatus = err.status || 500
+    const errMessage = err.message || "Something went wrong"
 
-//     return next(createError(errStatus, errMessage))
-// });
+    return next(createError(errStatus, errMessage))
+});
 
 app.listen(8800, () => {
     connect();
