@@ -1,8 +1,9 @@
 import RecipeList from "../components/RecipeList"
 import { Link } from "react-router-dom"
+import getCurrentUser from "../utils/getCurrentUser"
 
 const Home = () => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    const currentUser = getCurrentUser()
     return (
         <div className="w-full">
             <div className="w-[90%] md:container mx-auto">
