@@ -1,5 +1,6 @@
 import Hero from "../components/Hero"
-import RecipeList from "../components/RecipeList"
+import Popular from "../components/Popular"
+
 
 
 
@@ -8,6 +9,7 @@ const Home = () => {
     return (
         <div className="">
             <Hero />
+            <Popular />
         </div>
     )
 }
