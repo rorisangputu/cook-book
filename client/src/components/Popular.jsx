@@ -1,6 +1,15 @@
-import RecipeList from "../components/RecipeList"
+import { useEffect, useState } from 'react'
+import RecipeItem from './RecipeItem'
 
 const Popular = () => {
+    const [recipes, setRecipes] = useState([]);
+
+    useEffect(() => {
+        fetch('http://localhost:8800/recipes/popularRecipes')
+            .then(res => res.json())
+            .then(data => setRecipes(data))
+            .catch(err => console.error("Error fetching recipes:", err));
+    }, []);
     return (
         <div className="w-full">
             <div className="w-[90%] md:container mx-auto py-2">
@@ -13,8 +22,13 @@ const Popular = () => {
                         <p className="text-[#1d9451] text-[19px]">See all</p>
                     </div>
                 </div>
-                <RecipeList />
-
+                <div className='w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-7 items-center my-7'>
+                    {recipes.length > 0 && recipes.map((recipe) => (
+                        <div key={recipe._id}>
+                            <RecipeItem {...recipe} />
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
 
