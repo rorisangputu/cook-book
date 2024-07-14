@@ -50,15 +50,8 @@ export const login = async (req, res, next) => {
     }
 }
 export const logout = async (req, res, next) => {
-    try {
-        const hash = bcrypt.hashSync(req.body.password, 7);
-        const newUser = new User({
-            ...req.body,
-            password: hash
-        });
-
-        res.send(newUser);
-    } catch (error) {
-        console.log(error)
-    }
+    res.clearCookie("accessToken", {
+        sameSite: "none",
+        secure: true,
+    }).status(200).send("User has been logged out");
 }
