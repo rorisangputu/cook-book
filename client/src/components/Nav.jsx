@@ -4,6 +4,7 @@ import { Link } from "react-router-dom"
 import { LuCookie } from "react-icons/lu";
 
 const Nav = () => {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
     return (
         <div className="w-full shadow-md h-10">
@@ -21,12 +22,26 @@ const Nav = () => {
                             <li>
                                 <Link to="/recipes">Recipes</Link>
                             </li>
-                            <li>
-                                <Link to="/login">Login </Link>
-                            </li>
-                            <li>
-                                <Link to="/register">Register</Link>
-                            </li>
+                            {currentUser ? (
+                                <>
+                                    <li>
+                                        <Link to="/profile">Profile</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/logout">Logout</Link>
+                                    </li>
+                                </>
+                            ) : (
+                                <>
+                                    <li>
+                                        <Link to="/login">Login</Link>
+                                    </li>
+                                    <li>
+                                        <Link to="/register">Register</Link>
+                                    </li>
+                                </>
+                            )}
+
                         </ul>
                     </div>
 
