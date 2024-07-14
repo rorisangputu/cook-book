@@ -21,3 +21,16 @@ export const getRecipes = async (req, res, next) => {
     const recipes = await Recipe.find().populate('author', ['username']);
     res.send(recipes);
 }
+
+export const getRecipe = async (req, res, next) => {
+    const recipeId = req.params.id
+    try {
+        const recipe = await Recipe.findById(recipeId).populate('author', ['username']);
+        if (!recipe)
+            return next(createError(404, "Recipe not found"))
+
+        res.status(200).send(recipe);
+    } catch (error) {
+        next(error)
+    }
+}

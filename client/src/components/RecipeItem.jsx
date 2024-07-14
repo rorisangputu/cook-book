@@ -19,7 +19,7 @@ RecipeItem.propTypes = {
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     img: PropTypes.string.isRequired,
-
+    author: PropTypes.string.isRequired,
 };
 
 export default RecipeItem
