@@ -10,8 +10,8 @@ const HomeReview = () => {
                         <img src={pict} className='rounded-full h-12' alt="" />
                     </div>
                     <div className='flex flex-col justify-between h-auto'>
-                        <h4 className='text-lg font-medium'>Grilled Toasted Cheese and Bacon</h4>
-                        <h4 className='text-sm font-medium'>Rorisang</h4>
+                        <h4 className='text-lg font-medium text-orange-500'>Grilled Toasted Cheese and Bacon</h4>
+                        <h4 className='text-sm font-medium text-gray-400'>Rorisang</h4>
                     </div>
                 </div>
                 <div>
