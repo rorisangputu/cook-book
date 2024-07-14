@@ -1,12 +1,41 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import newRequest from '../utils/newRequest.js'
+import { useNavigate } from 'react-router-dom'
 
 const Login = () => {
+    const [redirect, setRedirect] = useState(false);
+    const [error, setError] = useState(null)
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    //Redirect
+    useEffect(() => {
+        if (redirect) {
+            navigate('/');
+        }
+    }, [redirect, navigate]);
+
+    //handles inputs
+
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const res = await newRequest.post('auth/login', { username, password });
+            localStorage.setItem("currentUser", JSON.stringify(res.data))
+            setRedirect(true)
+        } catch (err) {
+            setError(err.response.data);
+        }
+
+    };
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100">
             <div className="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
                 <h2 className="text-2xl font-bold text-center mb-6">Sign In</h2>
-                <form >
+                <form onSubmit={handleSubmit} >
                     <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="username">
                             Username
@@ -16,7 +45,7 @@ const Login = () => {
                             id="username"
                             type="text"
                             name="username"
-                            //onChange={ }
+                            onChange={e => setUsername(e.target.value)}
                             required
                         />
                     </div>
@@ -30,7 +59,7 @@ const Login = () => {
 
                             type="password"
                             name="password"
-                            // onChange={ }
+                            onChange={e => setPassword(e.target.value)}
                             required
                         />
                     </div>
@@ -43,6 +72,7 @@ const Login = () => {
                             Login
                         </button>
                     </div>
+                    {error && error}
                 </form>
             </div>
         </div>
