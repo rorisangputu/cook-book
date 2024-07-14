@@ -11,7 +11,7 @@ const Popular = () => {
             .catch(err => console.error("Error fetching recipes:", err));
     }, []);
     return (
-        <div className="w-full">
+        <div className="w-full bg-[#f7f7f7]">
             <div className="w-[90%] md:container mx-auto py-2">
                 <div className="flex flex-col md:flex-row justify-between md:items-center my-4">
                     <div>
