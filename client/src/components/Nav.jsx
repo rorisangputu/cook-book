@@ -23,15 +23,15 @@ const Nav = () => {
 
 
     return (
-        <div className="w-full shadow-md h-10">
-            <div className="w-[90%] md:container mx-auto flex items-center justify-between my-3">
+        <div className="w-full h-10 lg:h-16 flex items-center">
+            <div className="w-[90%] md:container mx-auto flex items-center justify-between ">
                 <div className="flex items-center">
                     <LuCookie className=" h-7 w-7" />
                 </div>
                 <div className="flex ">
 
                     <div>
-                        <ul className="flex gap-3">
+                        <ul className="flex gap-9 text-[20px]">
                             <li>
                                 <Link to="/">Home </Link>
                             </li>
