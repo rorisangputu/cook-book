@@ -5,23 +5,39 @@ import { RiFireLine } from "react-icons/ri";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import Review from '../components/Review';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const Recipe = () => {
+    const [recipeDet, setRecipeDet] = useState(null);
+    const { id } = useParams();
+
+    useEffect(() => {
+        fetch(`http://localhost:8800/recipes/recipe/${id}`)
+            .then(response => {
+                response.json().then(recipe => {
+                    setRecipeDet(recipe)
+                });
+            });
+    }, [])
+
+    if (!recipeDet) return '';
+
     return (
         <div className="w-full bg-[#edede9] py-9 ">
             <div className="w-[90%] md:container mx-auto rounded-2xl border shadow-md bg-white flex flex-col">
-                <div className=''>
-                    <img src={foodpic} alt="" className='rounded-tl-2xl rounded-tr-2xl' />
+                <div className='flex items-center justify-center '>
+                    <img src={recipeDet.img} alt="" className='rounded-tl-2xl rounded-tr-2xl w-full' />
                 </div>
                 <div className="my-2 mx-4">
                     <div className='flex justify-between items-center'>
                         <div>
-                            <h1 className="text-[25px]">Shakshuka</h1>
-                            <p className="text-xs">By Melissa Brown</p>
+                            <h1 className="text-[25px]">{recipeDet.name}</h1>
+                            <p className="text-xs">By {recipeDet.author.username}</p>
                         </div>
-                        <div className='flex gap-5'>
-                            <FaRegBookmark />
-                            <FiShare />
+                        <div className='flex gap-5 items-center border'>
+                            <FaRegBookmark className='h-10' />
+                            <FiShare className='h-5 w-5' />
                         </div>
 
                     </div>
@@ -32,7 +48,7 @@ const Recipe = () => {
                         </span>
                         <span className='flex gap-1 items-center'>
                             <BsBarChart />
-                            <p className='text-[15px]'>Easy</p>
+                            <p className='text-[15px]'>{recipeDet.difficulty}</p>
                         </span>
                         <span className='flex gap-1 items-center'>
                             <RiFireLine />
@@ -42,33 +58,15 @@ const Recipe = () => {
                     <div className='mb-3 mt-3'>
                         <h2 className='mb-2 text-[18px] font-medium'>Description</h2>
                         <p className='text-[#6b6b6b]'>
-                            Lorem ipsum dolor sit, amet consectetur
-                            adipisicing elit. Necessitatibus distinctio,
-                            rerum magnam nostrum inventore autem temporibus
-                            deserunt corporis.
+                            {recipeDet.desc}
                         </p>
                     </div>
                     <hr className='text-[#a0a0a0] w-[99%] mx-auto' />
                     <div className='my-3'>
-                        <h1 className='text-[20px] font-semibold'>Ingredients</h1>
-                        <ul className='list-disc grid grid-cols-2 mx-3 my-2' >
-                            <li>4 Tomatoes</li>
-                            <li>3 Eggs</li>
-                            <li>50mg Basil</li>
-                            <li>Cheese</li>
-                            <li>Garlic</li>
-                            <li>Pepper</li>
-                        </ul>
-                        <hr className='text-[#a0a0a0] w-[99%] mx-auto' />
-                        <div>
-                            <h2 className='text-[20px] font-semibold my-3'>Instructions</h2>
-                            <p>
-                                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                                Expedita distinctio explicabo unde recusandae ab, ullam earum
-                                harum inventore eum dolores reprehenderit maxime quo, quam corrupti,
-                                et maiores sed debitis quasi.
-                            </p>
-                        </div>
+                        <h1 className='text-[20px] font-semibold'>Recipe</h1>
+                        <div dangerouslySetInnerHTML={{ __html: recipeDet.content }} />
+
+
                     </div>
                 </div>
                 <hr className='text-[#a0a0a0] w-[99%] mx-auto' />
