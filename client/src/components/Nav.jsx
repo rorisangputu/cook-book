@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 // import { UserContext } from "../UserContext";
 import { LuCookie } from "react-icons/lu";
@@ -7,7 +6,7 @@ import newRequest from "../utils/newRequest";
 import { useNavigate } from 'react-router-dom'
 
 const Nav = () => {
-    const [redirect, setRedirect] = useState(false);
+
     const currentUser = getCurrentUser();
     const navigate = useNavigate();
 
@@ -15,18 +14,13 @@ const Nav = () => {
         try {
             await newRequest.post("/auth/logout");
             localStorage.setItem("currentUser", null);
-            setRedirect(true)
+            navigate('/');
         } catch (err) {
             console.log(err);
         }
     };
 
-    //Redirect
-    useEffect(() => {
-        if (redirect) {
-            navigate('/');
-        }
-    }, [redirect, navigate]);
+
 
     return (
         <div className="w-full shadow-md h-10">
