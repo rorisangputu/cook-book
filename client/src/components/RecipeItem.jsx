@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
 
-const RecipeItem = ({ _id, name, img }) => {
+const RecipeItem = ({ _id, name, img, author }) => {
     return (
         <div>
             <Link to={`/recipe/${_id}`}>
@@ -9,7 +9,7 @@ const RecipeItem = ({ _id, name, img }) => {
 
                 <h1 className='text-[20px] mt-3 mb-1 font-medium'>{name}</h1>
 
-                <p className='text-sm text-[#626262]'>By Melissa Brown</p>
+                <p className='text-sm text-[#626262]'>By {author.username}</p>
             </Link>
         </div>
     )
