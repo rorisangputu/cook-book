@@ -25,7 +25,7 @@ const Recipe = () => {
 
     return (
         <div className="w-full bg-[#edede9] py-9 ">
-            <div className="w-[90%] md:container mx-auto rounded-2xl border shadow-md bg-white flex flex-col">
+            <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto rounded-2xl border shadow-md bg-white flex flex-col">
                 <div className='flex items-center justify-center h-auto md:h-[40vh] overflow-hidden '>
                     <img src={recipeDet.img} alt="" className='rounded-tl-2xl rounded-tr-2xl w-full ' />
                 </div>
