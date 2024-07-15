@@ -4,7 +4,7 @@ import bowl from '../assets/thai.png'
 const Hero = () => {
     return (
         <div className='w-full bg-[#1f5129] h-[100vh] sm:h-[80vh] flex justify-center '>
-            <div className='w-[90%] md:container mx-auto flex items-center lg:justify-between '>
+            <div className='w-[90%] md:container lg:w-[90%] xl:container mx-auto flex items-center lg:justify-between '>
                 <div className='text-white py-5 flex flex-col text-center lg:text-left lg:w-3/5 '>
                     <h1 className='text-[50px] sm:text-[65px] xl:mr-56 font-semibold'>The Easiest Way To Make Your Favourite Meal</h1>
                     <p className='my-4 mx-9 md:mx-0 xl:mr-48  text-[16px] text-[#f2f2f2]'>New school twists to old school recipes! Discover over 1000+ recipes
