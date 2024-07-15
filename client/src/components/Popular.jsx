@@ -12,7 +12,7 @@ const Popular = () => {
     }, []);
     return (
         <div className="w-full bg-[#f7f7f7]">
-            <div className="w-[90%] md:container mx-auto py-2">
+            <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto py-2">
                 <div className="flex flex-col md:flex-row justify-between md:items-center my-4">
                     <div>
                         <h1 className="my-1 text-[32px] font-semibold">Latest Recipes</h1>
