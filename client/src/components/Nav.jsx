@@ -43,6 +43,9 @@ const Nav = () => {
                                     <li>
                                         <Link to="/profile">Profile</Link>
                                     </li>
+                                    <li>
+                                        <Link to="/addrecipe">Add Recipe</Link>
+                                    </li>
                                     <Link onClick={handleLogout}>
                                         Logout
                                     </Link>

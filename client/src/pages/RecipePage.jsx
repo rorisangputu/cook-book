@@ -1,5 +1,5 @@
 import RecipeList from "../components/RecipeList";
-import { useState, useEffect } from 'react';
+
 
 
 const RecipePage = () => {
@@ -15,14 +15,14 @@ const RecipePage = () => {
     ];
 
     const topAccounts = [
-        { name: 'Alice Johnson', specialty: 'Italian Cuisine', img:  },
-        { name: 'Bob Smith', specialty: 'Vegan Dishes', img:  },
-        { name: 'Cathy Brown', specialty: 'Desserts', img:  },
-        { name: 'David Wilson', specialty: 'Grill Master', img:  },
-        { name: 'Eva Adams', specialty: 'Healthy Recipes', img:  },
-        { name: 'Frank Miller', specialty: 'Seafood', img:  },
-        { name: 'Grace Lee', specialty: 'Asian Cuisine', img:  },
-        { name: 'Hank Green', specialty: 'BBQ', img:  }
+        { name: 'Alice Johnson', specialty: 'Italian Cuisine', img: "https://images.unsplash.com/photo-1669844444850-5acd7e8c71c5?q=80&w=1527&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'Bob Smith', specialty: 'Vegan Dishes', img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'Cathy Brown', specialty: 'Desserts', img: "https://plus.unsplash.com/premium_photo-1683134080778-aaa686741d0a?q=80&w=1368&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'David Wilson', specialty: 'Grill Master', img: "https://plus.unsplash.com/premium_photo-1661759523015-f71f86d87273?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'Eva Adams', specialty: 'Healthy Recipes', img: "https://plus.unsplash.com/premium_photo-1683140621573-233422bfc7f1?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'Frank Miller', specialty: 'Seafood', img: "https://plus.unsplash.com/premium_photo-1683121366070-5ceb7e007a97?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'Grace Lee', specialty: 'Asian Cuisine', img: "https://plus.unsplash.com/premium_photo-1664298528358-790433ba0815?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'Hank Green', specialty: 'BBQ', img: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
     ];
 
     return (
@@ -68,7 +68,7 @@ const RecipePage = () => {
                                 key={index}
                                 className="bg-white p-4 rounded-lg shadow-md text-center w-full sm:w-[48%] md:w-[32%] lg:w-[24%] cursor-pointer hover:bg-gray-100"
                             >
-                                <img src={account.img} alt={account.name} className="w-full h-24 object-cover rounded-lg mb-2" />
+                                <img src={account.img} alt={account.name} className="w-full h-44 object-cover rounded-lg mb-2" />
                                 <p className="text-lg font-medium">{account.name}</p>
                                 <p className="text-sm text-gray-600">{account.specialty}</p>
                             </div>
