@@ -9,7 +9,7 @@ const About = () => {
                     <h1 className="text-[32px] font-semibold text-[#1f5129]">Our Story</h1>
                     <p className="text-[19px] text-[#4c4c4c] mt-4">
                         Our journey started with a simple idea: to make cooking fun and accessible for everyone.
-                        Whether you're a seasoned chef or just starting out, our goal is to provide you with the
+                        Whether you&apos;re a seasoned chef or just starting out, our goal is to provide you with the
                         resources and inspiration you need to create delicious meals at home. We believe that
                         cooking should be an enjoyable experience, and our extensive collection of recipes reflects
                         that belief.
