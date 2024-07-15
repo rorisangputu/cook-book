@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 const About = () => {
     return (
@@ -37,23 +37,14 @@ const About = () => {
                         and user-friendly platform that brings the best of both worlds together. Get to know the
                         faces behind the recipes and learn more about our journey.
                     </p>
-                    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div className="mt-8 grid grid-cols-1">
                         {/* Example Team Member */}
                         <div className="flex flex-col items-center">
-                            <img src="https://via.placeholder.com/150" alt="Team Member" className="w-[150px] h-[150px] rounded-full" />
-                            <h3 className="text-[24px] font-semibold mt-4 text-[#1f5129]">John Doe</h3>
-                            <p className="text-[16px] text-[#4c4c4c]">Co-Founder & Head Chef</p>
+                            <img src="https://rorisang-dev.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fme.06abd61a.jpg&w=3840&q=75" alt="Team Member" className="w-[150px] h-[150px] rounded-full" />
+                            <h3 className="text-[24px] font-semibold mt-4 text-[#1f5129]">Rorisang Putu</h3>
+                            <p className="text-[16px] text-[#4c4c4c]">Co-Founder & Lead Developer</p>
                         </div>
-                        <div className="flex flex-col items-center">
-                            <img src="https://via.placeholder.com/150" alt="Team Member" className="w-[150px] h-[150px] rounded-full" />
-                            <h3 className="text-[24px] font-semibold mt-4 text-[#1f5129]">Jane Smith</h3>
-                            <p className="text-[16px] text-[#4c4c4c]">Lead Developer</p>
-                        </div>
-                        <div className="flex flex-col items-center">
-                            <img src="https://via.placeholder.com/150" alt="Team Member" className="w-[150px] h-[150px] rounded-full" />
-                            <h3 className="text-[24px] font-semibold mt-4 text-[#1f5129]">Emily Johnson</h3>
-                            <p className="text-[16px] text-[#4c4c4c]">UX/UI Designer</p>
-                        </div>
+
                     </div>
                 </div>
             </div>
