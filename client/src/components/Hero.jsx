@@ -15,7 +15,7 @@ const Hero = () => {
                     </Link>
                 </div>
                 <div className='hidden lg:flex w-2/5 lg:justify-center '>
-                    <img src={bowl} alt="" className='w-auto h-[400px] xl:h-[600px]' />
+                    <img src={bowl} alt="" className='w-auto h-[400px] xl:h-[500px]' />
                 </div>
             </div>
         </div>
