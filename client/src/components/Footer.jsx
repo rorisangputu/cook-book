@@ -3,7 +3,7 @@ import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 const Footer = () => {
     return (
         <div className="w-full bg-[#1f5129] text-white py-8">
-            <div className="w-[90%] md:container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
                 {/* Slogan Section */}
                 <div>
                     <h3 className="text-lg lg:text-3xl font-semibold mb-4">Taste Book</h3>

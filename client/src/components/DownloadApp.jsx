@@ -5,7 +5,7 @@ import apple from '../assets/apple.png'
 const DownloadApp = () => {
     return (
         <div className='w-full bg-[#f7f7f7] py-12'>
-            <div className='w-[90%] md:container mx-auto flex justify-center md:justify-between lg:justify-center bg-[#1d9451] flex-col md:flex-row rounded-xl md:h-[50vh]'>
+            <div className='w-[90%] md:container lg:w-[90%] xl:container mx-auto flex justify-center md:justify-between lg:justify-center bg-[#1d9451] flex-col md:flex-row rounded-xl md:h-[50vh]'>
 
                 <div className='w-full md:w-[40%] text-center md:text-left p-7 flex justify-center items-center'>
                     <div className='text-white w-[80%]'>
