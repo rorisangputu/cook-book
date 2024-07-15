@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import RecipeItem from './RecipeItem'
+import { Link } from 'react-router-dom';
 
 const Popular = () => {
     const [recipes, setRecipes] = useState([]);
@@ -19,7 +20,9 @@ const Popular = () => {
                         <p className="text-[19px] text-[#4c4c4c]">Our latest & most popular recipes of the week</p>
                     </div>
                     <div className="mt-2">
-                        <p className="text-[#1d9451] text-[19px]">See all</p>
+                        <Link to='/recipes'>
+                            <p className="text-[#1d9451] text-[19px]">See all</p>
+                        </Link>
                     </div>
                 </div>
                 <div className='w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-7 items-center my-7'>

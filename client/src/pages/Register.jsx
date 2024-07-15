@@ -45,11 +45,14 @@ const Register = () => {
         e.preventDefault();
         const url = await upload(file);
         try {
-            await newRequest.post('auth/register', {
+            const res = await newRequest.post('auth/register', {
                 ...user,
                 img: url
             })
             setRedirect(true)
+            if (res.ok) {
+                alert('Registration succesfull. Log In')
+            }
         } catch (error) {
             console.log(error)
         }

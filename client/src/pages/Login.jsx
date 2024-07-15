@@ -26,6 +26,10 @@ const Login = () => {
             const res = await newRequest.post('auth/login', { username, password });
             localStorage.setItem("currentUser", JSON.stringify(res.data))
             setRedirect(true)
+
+            if (res.ok) {
+                alert('Log In Successful')
+            }
         } catch (err) {
             setError(err.response.data);
         }
