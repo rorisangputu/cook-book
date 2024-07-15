@@ -70,7 +70,7 @@ const AddRecipe = () => {
 
     return (
         <div className='w-full'>
-            <div className='w-[90%] md:container mx-auto'>
+            <div className='w-[90%] md:container lg:w-[90%] xl:container mx-auto'>
                 <h1 className='mt-4 text-[17px]'>Create Recipe</h1>
                 <form action="" onSubmit={handleSubmit} className='flex flex-col gap-y-4 my-5 md:w-[90%] md:mx-auto'>
                     <input type="text"
