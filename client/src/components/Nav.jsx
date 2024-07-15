@@ -31,7 +31,7 @@ const Nav = () => {
                 <div className="flex ">
 
                     <div>
-                        <ul className="flex gap-9 text-[20px]">
+                        <ul className="hidden md:flex gap-9 text-[20px]">
                             <li>
                                 <Link to="/">Home </Link>
                             </li>
@@ -57,7 +57,6 @@ const Nav = () => {
                                     </li>
                                 </>
                             )}
-
                         </ul>
                     </div>
 

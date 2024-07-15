@@ -12,7 +12,7 @@ const RecipeList = () => {
     }, []);
 
     return (
-        <div className='w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-3 gap-7 items-center my-7'>
+        <div className='w-full grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-7 items-center my-7'>
             {recipes.length > 0 && recipes.map((recipe) => (
                 <div key={recipe._id}>
                     <RecipeItem {...recipe} />
