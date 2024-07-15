@@ -24,7 +24,7 @@ const reviews = [
         author: "John Smith",
         rating: 4,
         content: "A classic Italian pasta dish that's easy to make and always a hit with the family.",
-        img: "https://images.unsplash.com/photo-1512058564366-c9e3c8d3d1f7?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        img: "https://plus.unsplash.com/premium_photo-1664472634106-1430c3973e68?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     },
     {
         id: 4,
@@ -32,7 +32,7 @@ const reviews = [
         author: "Emily Johnson",
         rating: 5,
         content: "Simple and delicious avocado toast, perfect for breakfast or a light lunch.",
-        img: "https://images.unsplash.com/photo-1596755933273-2b5a4bfeaffd?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        img: "https://plus.unsplash.com/premium_photo-1676106623114-e2edc4f04fe0?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
     }
 ];
 
