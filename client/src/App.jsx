@@ -8,6 +8,7 @@ import AddRecipe from './pages/AddRecipe';
 import RecipePage from './pages/RecipePage';
 import Footer from './components/Footer';
 import About from './pages/About';
+import Contacts from './pages/Contacts';
 function App() {
   return (
     <div className='flex flex-col justify-between min-h-screen'>
@@ -34,6 +35,9 @@ function App() {
           } />
           <Route path={'/about'} element={
             <About />
+          } />
+          <Route path={'/contact'} element={
+            <Contacts />
           } />
 
         </Routes>
