@@ -39,7 +39,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="mt-8 text-center md:text-left mx-auto container text-sm">
+            <div className="mt-8 text-center md:text-left mx-auto w-[90%] md:container lg:w-[90%] xl:container text-sm">
                 <p>&copy; {new Date().getFullYear()} Taste Book. All rights reserved.</p>
             </div>
         </div>
