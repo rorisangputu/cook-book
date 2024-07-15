@@ -10,19 +10,19 @@ const RecipePage = () => {
         { name: 'Dessert', img: "https://plus.unsplash.com/premium_photo-1695028377703-0d883cb54792?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
         { name: 'Vegan', img: "https://plus.unsplash.com/premium_photo-1664648119295-e52d27cbfbc5?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
         { name: 'Vegetarian', img: "https://plus.unsplash.com/premium_photo-1705256741635-adc5c51272ba?q=80&w=1344&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
-        { name: 'Gluten-Free', img: "" },
-        { name: 'Keto', img: "" }
+        { name: 'Gluten-Free', img: "https://images.unsplash.com/photo-1504387432042-8aca549e4729?q=80&w=1287&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" },
+        { name: 'Keto', img: "https://images.unsplash.com/photo-1575835638288-74138ce93c0e?q=80&w=1336&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" }
     ];
 
     const topAccounts = [
-        { name: 'Alice Johnson', specialty: 'Italian Cuisine', img: accountImg },
-        { name: 'Bob Smith', specialty: 'Vegan Dishes', img: accountImg },
-        { name: 'Cathy Brown', specialty: 'Desserts', img: accountImg },
-        { name: 'David Wilson', specialty: 'Grill Master', img: accountImg },
-        { name: 'Eva Adams', specialty: 'Healthy Recipes', img: accountImg },
-        { name: 'Frank Miller', specialty: 'Seafood', img: accountImg },
-        { name: 'Grace Lee', specialty: 'Asian Cuisine', img: accountImg },
-        { name: 'Hank Green', specialty: 'BBQ', img: accountImg }
+        { name: 'Alice Johnson', specialty: 'Italian Cuisine', img:  },
+        { name: 'Bob Smith', specialty: 'Vegan Dishes', img:  },
+        { name: 'Cathy Brown', specialty: 'Desserts', img:  },
+        { name: 'David Wilson', specialty: 'Grill Master', img:  },
+        { name: 'Eva Adams', specialty: 'Healthy Recipes', img:  },
+        { name: 'Frank Miller', specialty: 'Seafood', img:  },
+        { name: 'Grace Lee', specialty: 'Asian Cuisine', img:  },
+        { name: 'Hank Green', specialty: 'BBQ', img:  }
     ];
 
     return (
