@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Correct import
+import { useState } from 'react';
+//import { useEffect } from 'react';
+import { Link } from 'react-router-dom'; // Correct import
+//import { useNavigate } from 'react-router-dom'; // Correct import
 import upload from "../utils/upload.js";
 import newRequest from "../utils/newRequest.js";
 
@@ -13,18 +15,18 @@ const Register = () => {
         img: ''
     });
     const [loading, setLoading] = useState(false);
-    const [redirect, setRedirect] = useState(false);
+    //const [redirect, setRedirect] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(null);
 
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
 
     //Redirect
-    useEffect(() => {
-        if (redirect) {
-            navigate('/');
-        }
-    }, [redirect, navigate]);
+    // useEffect(() => {
+    //     if (redirect) {
+    //         navigate('/');
+    //     }
+    // }, [redirect, navigate]);
 
     //handles inputs
     const handleChange = (e) => {
@@ -54,7 +56,7 @@ const Register = () => {
                 ...user,
                 img: url
             })
-            setRedirect(true)
+            //setRedirect(true)
             if (res.ok) {
                 setSuccess(true);
                 alert('Registration succesfull. Log In')

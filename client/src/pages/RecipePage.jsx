@@ -62,7 +62,7 @@ const RecipePage = () => {
                 {/* Top Accounts */}
                 <div className="my-6">
                     <h2 className="text-[24px] font-semibold mb-4">Top Accounts</h2>
-                    <div className="flex-wrap gap-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+                    <div className="flex flex-wrap gap-4">
                         {topAccounts.map((account, index) => (
                             <div
                                 key={index}
