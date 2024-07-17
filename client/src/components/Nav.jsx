@@ -29,11 +29,12 @@ const Nav = () => {
 
 
     return (
-        <div className="w-full h-10 lg:h-16 flex items-center">
+        <div className="w-full h-16 lg:h-16 flex items-center">
             <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto flex items-center justify-between ">
-                <div className="flex items-center">
-                    <Link to="/">
+                <div >
+                    <Link to="/" className="flex items-center gap-4">
                         <LuCookie className=" h-7 w-7" />
+                        <h1 className="text-[25px] text-[#088310] font-bold">Taste Book.</h1>
                     </Link>
                 </div>
                 <div className="flex ">
@@ -81,7 +82,7 @@ const Nav = () => {
                  border-r-gray-900 bg-white ease-in-out duration-500 `
                         : `fixed left-[-100%]`}
                     >
-                        <h1 className='w-full text-3xl font-bold m-4 pt-5 text-[#00df9a]'>
+                        <h1 className='w-full text-3xl font-bold m-4 pt-5 text-[#088310] '>
                             Taste Book.
                         </h1>
                         <ul onClick={() => { setNav(false) }} className='cursor-pointer uppercase '>
