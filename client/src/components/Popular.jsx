@@ -6,10 +6,21 @@ const Popular = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('https://cook-book-api-nu.vercel.app/recipes/popularRecipes')
-            .then(res => res.json())
+        fetch("https://cook-book-api-nu.vercel.app/recipes/popularRecipes", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            credentials: 'include' // Include credentials if needed
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(data => setRecipes(data))
-            .catch(err => console.error("Error fetching recipes:", err));
+            .catch(error => console.error("Error fetching recipes:", error));
     }, []);
     return (
         <div className="w-full bg-[#f7f7f7]">
