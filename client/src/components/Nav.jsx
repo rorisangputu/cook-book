@@ -80,14 +80,37 @@ const Nav = () => {
                         : `fixed left-[-100%]`}
                     >
                         <h1 className='w-full text-3xl font-bold m-4 pt-5 text-[#00df9a]'>
-                            NexData.
+                            Taste Book.
                         </h1>
                         <ul className='cursor-pointer uppercase '>
-                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>Home</li>
-                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>Company</li>
-                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>Resources</li>
-                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>About</li>
-                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white '>Resources</li>
+                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
+                                <Link to="/">Home </Link>
+                            </li>
+                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
+                                <Link to="/recipes">Recipes</Link>
+                            </li>
+                            {currentUser ? (
+                                <>
+                                    <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
+                                        <Link to="/profile">Profile</Link>
+                                    </li>
+                                    <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white'>
+                                        <Link to="/addrecipe">Add Recipe</Link>
+                                    </li>
+                                    <Link onClick={handleLogout}>
+                                        Logout
+                                    </Link>
+                                </>
+                            ) : (
+                                <>
+                                    <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
+                                        <Link to="/login">Login</Link>
+                                    </li>
+                                    <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white'>
+                                        <Link to="/register">Register</Link>
+                                    </li>
+                                </>
+                            )}
                         </ul>
                     </div>
                 </div>
