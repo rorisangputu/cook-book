@@ -4,6 +4,9 @@ import { LuCookie } from "react-icons/lu";
 import getCurrentUser from "../utils/getCurrentUser"
 import newRequest from "../utils/newRequest";
 import { useNavigate } from 'react-router-dom'
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
+import { useState } from "react";
+
 
 const Nav = () => {
 
@@ -19,7 +22,10 @@ const Nav = () => {
             console.log(err);
         }
     };
-
+    const [nav, setNav] = useState(false);
+    const handleNav = () => {
+        setNav(!nav);
+    }
 
 
     return (
@@ -62,7 +68,28 @@ const Nav = () => {
                             )}
                         </ul>
                     </div>
+                    {/* MENU BUTTON */}
+                    <div onClick={handleNav} className='block md:hidden mr-5'>
+                        {nav ? <AiOutlineClose className='text-black' size={20} /> : <AiOutlineMenu className='text-black' size={20} />}
 
+                    </div>
+
+                    {/* HAMBURGER MENU */}
+                    <div className={nav ? `fixed left-0 top-0 w-[60%] h-full border-r 
+                 border-r-gray-900 bg-white ease-in-out duration-500 `
+                        : `fixed left-[-100%]`}
+                    >
+                        <h1 className='w-full text-3xl font-bold m-4 pt-5 text-[#00df9a]'>
+                            NexData.
+                        </h1>
+                        <ul className='cursor-pointer uppercase '>
+                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>Home</li>
+                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>Company</li>
+                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>Resources</li>
+                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>About</li>
+                            <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white '>Resources</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </div>
