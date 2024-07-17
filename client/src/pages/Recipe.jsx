@@ -12,7 +12,7 @@ const Recipe = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        fetch(`http://localhost:8800/recipes/recipe/${id}`)
+        fetch(`https://cook-book-api-nu.vercel.app/recipes/recipe/${id}`)
             .then(response => response.json())
             .then(recipe => setRecipeDet(recipe))
             .catch(error => console.error('Error fetching recipe:', error));

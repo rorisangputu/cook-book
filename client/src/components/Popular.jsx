@@ -6,7 +6,7 @@ const Popular = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8800/recipes/popularRecipes')
+        fetch('https://cook-book-api-nu.vercel.app/recipes/popularRecipes')
             .then(res => res.json())
             .then(data => setRecipes(data))
             .catch(err => console.error("Error fetching recipes:", err));
