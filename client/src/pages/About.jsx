@@ -42,7 +42,7 @@ const About = () => {
                         <div className="flex flex-col items-center">
                             <img src="https://rorisang-dev.vercel.app/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fme.06abd61a.jpg&w=3840&q=75" alt="Team Member" className="w-[150px] h-[150px] rounded-full" />
                             <h3 className="text-[24px] font-semibold mt-4 text-[#1f5129]">Rorisang Putu</h3>
-                            <p className="text-[16px] text-[#4c4c4c]">Co-Founder & Lead Developer</p>
+                            <p className="text-[16px] text-[#4c4c4c]">Founder & Lead Developer</p>
                         </div>
 
                     </div>

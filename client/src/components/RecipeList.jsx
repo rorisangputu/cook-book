@@ -5,7 +5,7 @@ const RecipeList = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('https://cook-book-api-0tn7.onrender.com/recipes')
+        fetch('http://localhost:8800/recipes')
             .then(res => res.json())
             .then(data => setRecipes(data))
             .catch(err => console.error("Error fetching recipes:", err));

@@ -6,7 +6,7 @@ const Popular = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('https://cook-book-api-0tn7.onrender.com/recipes/popularRecipes')
+        fetch('http://localhost:8800/recipes/popularRecipes')
             .then(res => res.json())
             .then(data => setRecipes(data))
             .catch(err => console.error("Error fetching recipes:", err));
