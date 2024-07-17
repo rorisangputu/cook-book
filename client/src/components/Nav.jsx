@@ -30,16 +30,18 @@ const Nav = () => {
 
     return (
         <div className="w-full h-10 lg:h-16 flex items-center">
-            <div className="w-[90%] xl:container mx-auto flex items-center justify-between ">
+            <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto flex items-center justify-between ">
                 <div className="flex items-center">
-                    <LuCookie className=" h-7 w-7" />
+                    <Link to="/">
+                        <LuCookie className=" h-7 w-7" />
+                    </Link>
                 </div>
                 <div className="flex ">
 
                     <div>
                         <ul className="hidden md:flex gap-9 text-[20px]">
                             <li>
-                                <Link to="/">Home </Link>
+                                <Link to="/">Home</Link>
                             </li>
                             <li>
                                 <Link to="/recipes">Recipes</Link>
@@ -69,7 +71,7 @@ const Nav = () => {
                         </ul>
                     </div>
                     {/* MENU BUTTON */}
-                    <div onClick={handleNav} className='block md:hidden mr-5'>
+                    <div onClick={handleNav} className='block md:hidden'>
                         {nav ? <AiOutlineClose className='text-black' size={20} /> : <AiOutlineMenu className='text-black' size={20} />}
 
                     </div>
@@ -94,12 +96,16 @@ const Nav = () => {
                                     <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
                                         <Link to="/profile">Profile</Link>
                                     </li>
-                                    <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white'>
+                                    <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
                                         <Link to="/addrecipe">Add Recipe</Link>
                                     </li>
-                                    <Link onClick={handleLogout}>
-                                        Logout
-                                    </Link>
+
+                                    <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white'>
+                                        <Link onClick={handleLogout}>
+                                            Logout
+                                        </Link>
+                                    </li>
+
                                 </>
                             ) : (
                                 <>
