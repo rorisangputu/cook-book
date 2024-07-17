@@ -7,7 +7,7 @@ const Profile = () => {
     return (
         <div className='w-full min-h-screen'>
             <div className='w-[90%] md:container rounded-tl-xl mx-auto rounded-tr-xl'>
-                <div className='flex flex-col gap-4'>
+                <div className='flex flex-col gap-4 mb-4'>
                     <div className='flex items-center justify-center h-[15vh] md:h-[40vh] overflow-hidden'>
                         <img src={foodpic} alt="foodpic" className='rounded-tl-2xl rounded-tr-2xl w-full' />
                     </div>
@@ -21,28 +21,29 @@ const Profile = () => {
                                 </Link>
                             </div>
                         </div>
-                        <div className='flex'>
+                        <div className='flex my-2'>
                             <ul className='flex gap-3 w-full text-center justify-between items-center lg:justify-around '>
-                                <li className='w-1/3'>
+                                <li className='font-medium hover:underline hover:text-[#a9a9a9] w-1/3'>
                                     <Link>
                                         My Recipes
                                     </Link>
                                 </li>
-                                <li className='w-1/3'>
+                                <li className='font-medium hover:underline hover:text-[#a9a9a9] w-1/3'>
                                     <Link>
                                         Likes
                                     </Link>
                                 </li>
-                                <li className='w-1/3'>
+                                <li className='font-medium hover:underline hover:text-[#a9a9a9] w-1/3'>
                                     <Link>
                                         Following
                                     </Link>
                                 </li>
                             </ul>
                         </div>
+
                     </div>
                 </div>
-
+                <hr />
                 {/* MAIN CONTENT */}
 
             </div>
