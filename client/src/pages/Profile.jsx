@@ -44,6 +44,7 @@ const Profile = () => {
                 </div>
 
                 {/* MAIN CONTENT */}
+
             </div>
         </div>
     )
