@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const newRequest = axios.create({
-    baseURL: "http://localhost:8800",
+    baseURL: "https://cook-book-api-nu.vercel.app",
     withCredentials: true,
 });
 
