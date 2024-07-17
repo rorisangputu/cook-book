@@ -30,7 +30,7 @@ const Nav = () => {
 
     return (
         <div className="w-full h-10 lg:h-16 flex items-center">
-            <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto flex items-center justify-between ">
+            <div className="w-[90%] xl:container mx-auto flex items-center justify-between ">
                 <div className="flex items-center">
                     <LuCookie className=" h-7 w-7" />
                 </div>
