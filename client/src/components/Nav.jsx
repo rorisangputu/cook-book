@@ -82,7 +82,7 @@ const Nav = () => {
                         <h1 className='w-full text-3xl font-bold m-4 pt-5 text-[#00df9a]'>
                             Taste Book.
                         </h1>
-                        <ul className='cursor-pointer uppercase '>
+                        <ul onClick={() => { setNav(false) }} className='cursor-pointer uppercase '>
                             <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
                                 <Link to="/">Home </Link>
                             </li>
