@@ -1,4 +1,4 @@
-import React from 'react'
+
 import foodpic from '../assets/foodpic.jpg';
 
 const Profile = () => {
