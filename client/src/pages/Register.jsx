@@ -57,8 +57,9 @@ const Register = () => {
                 img: url
             })
             //setRedirect(true)
+            setSuccess(true);
             if (res.ok) {
-                setSuccess(true);
+
                 alert('Registration succesfull. Log In')
             }
         } catch (error) {

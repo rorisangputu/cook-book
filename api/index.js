@@ -29,7 +29,7 @@ app.use(cookieParser());
 
 //CORS Config
 const corsOptions = {
-    origin: "https://cook-book-client.onrender.com",
+    origin: "http://localhost:5173",
     credentials: true,
 }
 app.use(cors(corsOptions));
