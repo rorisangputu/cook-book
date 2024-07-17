@@ -23,17 +23,17 @@ const Profile = () => {
                         </div>
                         <div className='flex'>
                             <ul className='flex gap-3 w-full text-center justify-between items-center lg:justify-around '>
-                                <li className='border w-1/3'>
+                                <li className='w-1/3'>
                                     <Link>
                                         My Recipes
                                     </Link>
                                 </li>
-                                <li className='border w-1/3'>
+                                <li className='w-1/3'>
                                     <Link>
                                         Likes
                                     </Link>
                                 </li>
-                                <li className='border w-1/3'>
+                                <li className='w-1/3'>
                                     <Link>
                                         Following
                                     </Link>

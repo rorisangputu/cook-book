@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 const Login = () => {
     const [redirect, setRedirect] = useState(false);
     const [error, setError] = useState(null)
+    const [loading, setLoading] = useState(false);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Login = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-
+        setLoading(true);
         try {
             const res = await newRequest.post('auth/login', { username, password });
             localStorage.setItem("currentUser", JSON.stringify(res.data))
@@ -70,10 +71,21 @@ const Login = () => {
 
                     <div className="flex items-center justify-between">
                         <button
-                            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                            className={`bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${loading ? 'cursor-not-allowed' : ''}`}
                             type="submit"
+                            disabled={loading}
                         >
-                            Login
+                            {loading ? (
+                                <div className="flex items-center">
+                                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"></path>
+                                    </svg>
+                                    Processing...
+                                </div>
+                            ) : (
+                                'Sign Up'
+                            )}
                         </button>
                     </div>
                     {error && error}
