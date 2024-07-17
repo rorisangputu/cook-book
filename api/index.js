@@ -10,6 +10,7 @@ import recipeRoutes from './routes/recipeRoute.js'
 import authRoutes from './routes/authRoutes.js'
 
 const app = express();
+const port = process.env.PORT || 8800
 dotenv.config();
 
 //db connection
@@ -28,7 +29,7 @@ app.use(cookieParser());
 
 //CORS Config
 const corsOptions = {
-    origin: "https://cook-book-client-kappa.vercel.app",
+    origin: "http://localhost:5173",
     credentials: true,
 }
 app.use(cors(corsOptions));
@@ -43,7 +44,7 @@ app.use((err, req, res, next) => {
     return next(createError(errStatus, errMessage))
 });
 
-app.listen(8800, () => {
+app.listen(port, () => {
     connect();
     console.log("Listening on port 8800");
 })

@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const newRequest = axios.create({
-    baseURL: "https://cook-book-api-nu.vercel.app",
+    baseURL: "https://cook-book-api-0tn7.onrender.com",
     withCredentials: true,
 });
 
