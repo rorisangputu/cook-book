@@ -92,4 +92,4 @@ Taste Book/
 
 ## Contact
 
-For any inquiries, please contact Rorisang Putu @ rorisangputul@gmail..com.
+For any inquiries, please contact Rorisang Putu @ rorisangputu@gmail..com.
