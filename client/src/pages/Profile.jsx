@@ -1,11 +1,12 @@
-import { Link, Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import foodpic from '../assets/foodpic.jpg';
-
 import getCurrentUser from "../utils/getCurrentUser";
 import { useState, useEffect } from 'react';
 
+
 const Profile = () => {
     const [user, setUser] = useState(null);
+    const navigate = useNavigate();
     const { id } = useParams();
     useEffect(() => {
         const fetchData = async () => {
@@ -22,13 +23,15 @@ const Profile = () => {
 
                 const user = await response.json();
                 setUser(user);
+                navigate(`/profile/${id}/myrecipes`);
             } catch (error) {
                 console.error('Error fetching user:', error);
             }
         };
 
         fetchData();
-    }, [id]);
+
+    }, [id, navigate]);
 
     const currentUser = getCurrentUser();
     if (!currentUser) {
@@ -81,10 +84,11 @@ const Profile = () => {
                     </div>
                 </div>
                 <hr />
+
                 {/* MAIN CONTENT */}
                 <Outlet />
             </div>
-        </div>
+        </div >
     )
 }
 
