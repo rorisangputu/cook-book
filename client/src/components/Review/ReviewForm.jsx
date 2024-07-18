@@ -1,6 +1,13 @@
+import { useState } from "react"
 
+const ReviewForm = ({ recipe, currentUser }) => {
+    const [review, setReview] = useState('');
+    const [rating, setRating] = useState(3);
 
-const ReviewForm = () => {
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+    }
+
     return (
         <div className='w-full md:w-[60%]'>
             <form action="" className='flex flex-col'>
