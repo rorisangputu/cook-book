@@ -39,3 +39,10 @@ export const getRecipe = async (req, res, next) => {
         next(error)
     }
 }
+
+export const getUserRecipes = async (req, res, next) => {
+
+}
+export const editRecipe = async (req, res, next) => {
+
+}
