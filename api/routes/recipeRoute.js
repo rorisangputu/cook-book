@@ -1,7 +1,7 @@
 import express from 'express';
 import {
     createRecipe, getRecipe, getRecipes,
-    getPopularRecipes, getUserRecipes, editRecipe
+    getPopularRecipes, editRecipe
 } from '../controllers/recipeController.js';
 import { verifyToken } from '../middleware/jwt.js';
 const router = express.Router();

@@ -1,15 +1,43 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import foodpic from '../assets/foodpic.jpg';
 import propic from '../assets/profilepic.jpg';
 import getCurrentUser from "../utils/getCurrentUser";
-
+import { useState, useEffect } from 'react';
 
 const Profile = () => {
-    const currentUser = getCurrentUser();
+    const [user, setUser] = useState(null);
+    const { id } = useParams();
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:8800/profile/${id}`, {
+                    credentials: 'include'
+                });
 
+                if (response.status === 401) {
+                    // Handle unauthorized access
+                    console.error("Unauthorized access");
+                    return;
+                }
+
+                const user = await response.json();
+                setUser(user);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    const currentUser = getCurrentUser();
     if (!currentUser) {
         return <div>Please log in to view your profile.</div>;
     }
+
+    console.log(user);
+
+
     return (
         <div className='w-full min-h-screen'>
             <div className='w-[90%] md:container rounded-tl-xl mx-auto rounded-tr-xl'>
