@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const RecipeItem = ({ _id, name, img, author }) => {
-    console.log(author)
+
     return (
         <div className='w-auto flex flex-col items-center justify-between p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'>
             <Link to={`/recipe/${_id}`}>
