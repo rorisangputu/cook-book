@@ -6,6 +6,7 @@ import { FiShare } from "react-icons/fi";
 import Review from '../components/Review';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import ReviewForm from "../components/Review/ReviewForm";
 
 const Recipe = () => {
     const [recipeDet, setRecipeDet] = useState(null);
@@ -62,6 +63,9 @@ const Recipe = () => {
                     </div>
                 </div>
                 <hr className='border-t border-gray-300 w-[99%] mx-auto' />
+                <div className="my-2 mx-4">
+                    <ReviewForm />
+                </div>
                 <div className='mx-4 my-3'>
                     <h2 className='text-[19px] font-semibold'>Reviews</h2>
                     {recipeDet.reviews && recipeDet.reviews.length > 0 ? (

@@ -20,10 +20,12 @@ const reviewSchema = new Schema({
         type: String,
 
     },
-    date: {
-        type: Date,
-        default: Date.now
+    userImg: {
+        type: String
     }
+
+}, {
+    timestamps: true //Options: creates at and updated at 
 });
 
 export default mongoose.model('Review', reviewSchema);
