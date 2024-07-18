@@ -3,17 +3,18 @@ import Review from "../models/reviewModel.js";
 import Recipe from "../models/recipeModel.js";
 
 export const createReview = async (req, res, next) => {
-    const { user, recipe, rating, comment, userImg } = req.body;
+    console.log('Dataaa:', req.body); //data is being passed
+    const { user, recipe, rating, comment } = req.body;
 
     try {
         const newReview = new Review({
-            user: mongoose.Types.ObjectId(user),
-            recipe: mongoose.Types.ObjectId(recipe),
+            user,
+            recipe,
             rating,
             comment,
-            userImg
-        });
 
+        });
+        console.log(newReview); //but not inserted
         const savedReview = await newReview.save();
         res.status(201).json(savedReview);
     } catch (error) {

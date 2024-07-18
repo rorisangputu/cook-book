@@ -64,9 +64,11 @@ const Recipe = () => {
                     </div>
                 </div>
                 <hr className='border-t border-gray-300 w-[99%] mx-auto' />
-                <div className="my-2 mx-4">
-                    <ReviewForm recipe={recipeDet} currentUser={currentUser} />
-                </div>
+                {currentUser ? (
+                    <div className="my-2 mx-4">
+                        <ReviewForm recipe={recipeDet} currentUser={currentUser} />
+                    </div>) : ("")
+                }
                 <div className='mx-4 my-3'>
                     <h2 className='text-[19px] font-semibold'>Reviews</h2>
                     {recipeDet.reviews && recipeDet.reviews.length > 0 ? (
