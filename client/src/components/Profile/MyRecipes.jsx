@@ -1,14 +1,41 @@
 import { useEffect, useState } from 'react'
 import RecipeItem from '../RecipeItem';
+import { useParams } from 'react-router-dom';
+import getCurrentUser from '../../utils/getCurrentUser';
 
 const MyRecipes = () => {
     const [recipes, setRecipes] = useState([]);
+    const { id } = useParams();
     useEffect(() => {
-        fetch('http://localhost:8800/recipes')
-            .then(res => res.json())
-            .then(data => setRecipes(data))
-            .catch(err => console.error("Error fetching recipes:", err));
-    }, []);
+        const fetchData = async () => {
+            try {
+                const response = await fetch(`http://localhost:8800/profile/${id}/myrecipes`, {
+                    credentials: 'include'
+                });
+
+                if (response.status === 401) {
+                    // Handle unauthorized access
+                    console.error("Unauthorized access");
+                    return;
+                }
+
+                const recipes = await response.json();
+                setRecipes(recipes);
+            } catch (error) {
+                console.error('Error fetching user:', error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
+        return <div>Please log in to view your profile.</div>;
+    }
+    if (!recipes) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className='w-full my-3'>

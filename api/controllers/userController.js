@@ -1,5 +1,5 @@
 import User from "../models/userModel.js";
-
+import Recipe from '../models/recipeModel.js';
 export const getUser = async (req, res, next) => {
     const userId = req.params.id
     try {
@@ -13,8 +13,15 @@ export const getUser = async (req, res, next) => {
     }
 }
 export const getUserRecipes = async (req, res, next) => {
-
+    const authorId = req.params.id;
+    try {
+        const userRecipes = await Recipe.find({ author: authorId }).populate('author', ['username']);
+        res.json(userRecipes);
+    } catch (err) {
+        next(err)
+    }
 }
+
 export const editprofile = async (req, res, next) => {
 
     console.log(req.body);

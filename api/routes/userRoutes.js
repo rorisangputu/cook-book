@@ -4,8 +4,8 @@ import { getUser, editprofile, getUserRecipes } from '../controllers/userControl
 const router = express.Router();
 
 router.get('/:id', verifyToken, getUser)
-router.put('/editprofile/:id', verifyToken, editprofile)
-router.get('/myrecipes', verifyToken, getUserRecipes)
+router.put('/:id/editprofile', verifyToken, editprofile)
+router.get('/:id/myrecipes', verifyToken, getUserRecipes)
 
 
 export default router;

@@ -1,6 +1,6 @@
 import { Link, Outlet, useParams } from 'react-router-dom';
 import foodpic from '../assets/foodpic.jpg';
-import propic from '../assets/profilepic.jpg';
+
 import getCurrentUser from "../utils/getCurrentUser";
 import { useState, useEffect } from 'react';
 
@@ -34,8 +34,11 @@ const Profile = () => {
     if (!currentUser) {
         return <div>Please log in to view your profile.</div>;
     }
+    if (!user) {
+        return <div>Loading...</div>;
+    }
 
-    console.log(user);
+
 
 
     return (
@@ -47,9 +50,9 @@ const Profile = () => {
                     </div>
                     <div className='flex flex-col gap-3'>
                         <div className='flex gap-3 items-center'>
-                            <img src={propic} alt="" className='w-16 h-16 rounded-full' />
+                            <img src={user.img} alt="" className='w-16 h-16 rounded-full' />
                             <div>
-                                <h1>Rorisang</h1>
+                                <h1>{user.username}</h1>
                                 <Link to='edit-profile'>
                                     <p className='text-[#a9a9a9]'>Edit profile</p>
                                 </Link>

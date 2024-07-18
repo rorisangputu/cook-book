@@ -22,12 +22,11 @@ export const register = async (req, res, next) => {
 }
 
 export const login = async (req, res, next) => {
-    console.log(req.body);
 
     try {
         const user = await User.findOne({ username: req.body.username });
 
-        if (!user) return next(createError(404, "User not found"))
+        if (!user) return next(createError(404, "User not found"));
 
         const isCorrect = bcrypt.compareSync(req.body.password, user.password);
         if (!isCorrect) return next(createError(400, "Wrong password or username"));
@@ -35,18 +34,23 @@ export const login = async (req, res, next) => {
         const token = jwt.sign(
             {
                 id: user._id,
-
             },
-            process.env.JWT_KEY
+            process.env.JWT_KEY,
+            { expiresIn: '1h' } // Token expires in 1 hour
         );
 
-        const { password, ...info } = user._doc
+        const { password, ...info } = user._doc;
         res.cookie("accessToken", token, {
-            httpOnly: true
-        }).status(200).send(info)
-        console.log("User loged in")
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production', // Ensure secure cookie in production
+            sameSite: 'strict',
+            maxAge: 60 * 60 * 1000, // 1 hour
+        }).status(200).send(info);
+
+        console.log("User logged in");
     } catch (err) {
-        next(err)
+        console.error(err);
+        next(err);
     }
 }
 export const logout = async (req, res, next) => {

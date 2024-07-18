@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const RecipeItem = ({ _id, name, img, author }) => {
+    console.log(author)
     return (
         <div className='w-auto flex flex-col items-center justify-between p-4 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300'>
             <Link to={`/recipe/${_id}`}>
@@ -23,6 +24,8 @@ RecipeItem.propTypes = {
     img: PropTypes.string.isRequired,
     author: PropTypes.shape({
         username: PropTypes.string.isRequired,
+        img: PropTypes.string, // Optional if your schema includes author's image
+        // Add more properties as needed
     }).isRequired,
 };
 
