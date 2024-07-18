@@ -42,7 +42,12 @@ function App() {
           } />
           <Route path={'/profile'} element={
             <Profile />
-          } />
+          }>
+            <Route path={'/profile/myrecipes'} element={<h1>My Recipes</h1>} />
+            <Route path={'/profile/liked-recipes'} element={<h1>Liked Recipes</h1>} />
+            <Route path={'/profile/edit-profile'} element={<h1>Edit Profile</h1>} />
+            <Route path={'/profile/favorite-profiles'} element={<h1>Favorite Profiles</h1>} />
+          </Route>
 
         </Routes>
       </div>

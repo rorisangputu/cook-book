@@ -1,5 +1,5 @@
 
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import foodpic from '../assets/foodpic.jpg';
 import propic from '../assets/profilepic.jpg';
 
@@ -45,7 +45,7 @@ const Profile = () => {
                 </div>
                 <hr />
                 {/* MAIN CONTENT */}
-
+                <Outlet />
             </div>
         </div>
     )
