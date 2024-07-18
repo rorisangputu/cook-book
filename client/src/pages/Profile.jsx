@@ -45,7 +45,7 @@ const Profile = () => {
         <div className='w-full min-h-screen'>
             <div className='w-[90%] md:container rounded-tl-xl mx-auto rounded-tr-xl'>
                 <div className='flex flex-col gap-4 mb-4'>
-                    <div className='flex items-center justify-center h-[15vh] md:h-[40vh] overflow-hidden'>
+                    <div className='flex items-center justify-center h-[15vh] md:h-[20vh] overflow-hidden'>
                         <img src={foodpic} alt="foodpic" className='rounded-tl-2xl rounded-tr-2xl w-full' />
                     </div>
                     <div className='flex flex-col gap-3'>
