@@ -9,6 +9,7 @@ import createError from './utils/createError.js';
 import recipeRoutes from './routes/recipeRoute.js'
 import authRoutes from './routes/authRoutes.js'
 import userRoutes from './routes/userRoutes.js'
+import reviewRoutes from './routes/reviewRoute.js'
 
 const app = express();
 const port = process.env.PORT || 8800
@@ -38,6 +39,7 @@ app.use(cors(corsOptions));
 app.use("/recipes", recipeRoutes);
 app.use("/auth", authRoutes);
 app.use("/profile", userRoutes);
+app.use('/reviews', reviewRoutes);
 
 app.use((err, req, res, next) => {
     const errStatus = err.status || 500
