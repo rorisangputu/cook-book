@@ -12,6 +12,7 @@ const Nav = () => {
 
     const currentUser = getCurrentUser();
     const navigate = useNavigate();
+    const id = currentUser?._id;
 
     const handleLogout = async () => {
         try {
@@ -50,7 +51,7 @@ const Nav = () => {
                             {currentUser ? (
                                 <>
                                     <li>
-                                        <Link to="/profile">Profile</Link>
+                                        <Link to={`/profile/${id}`}>Profile</Link>
                                     </li>
                                     <li>
                                         <Link to="/addrecipe">Add Recipe</Link>
@@ -95,7 +96,7 @@ const Nav = () => {
                             {currentUser ? (
                                 <>
                                     <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
-                                        <Link to="/profile">Profile</Link>
+                                        <Link to={`/profile/${id}`}>Profile</Link>
                                     </li>
                                     <li className='p-4 pl-4 hover:bg-[#000100] hover:text-white border-b border-b-gray-600'>
                                         <Link to="/addrecipe">Add Recipe</Link>

@@ -37,7 +37,8 @@ app.use(cors(corsOptions));
 
 app.use("/recipes", recipeRoutes);
 app.use("/auth", authRoutes);
-app.use("/profile", userRoutes)
+app.use("/profile", userRoutes);
+
 app.use((err, req, res, next) => {
     const errStatus = err.status || 500
     const errMessage = err.message || "Something went wrong"

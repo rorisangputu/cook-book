@@ -40,9 +40,7 @@ export const getRecipe = async (req, res, next) => {
     }
 }
 
-export const getUserRecipes = async (req, res, next) => {
 
-}
 export const editRecipe = async (req, res, next) => {
 
 }

@@ -12,7 +12,6 @@ import Contacts from './pages/Contacts';
 import Profile from './pages/Profile';
 import MyRecipes from './components/Profile/MyRecipes';
 import EditProfile from './components/Profile/EditProfile';
-import LikeRecipes from './components/Profile/LikedRecipes';
 import LikedRecipes from './components/Profile/LikedRecipes';
 function App() {
   return (
@@ -44,13 +43,13 @@ function App() {
           <Route path={'/contact'} element={
             <Contacts />
           } />
-          <Route path={'/profile'} element={
+          <Route path={'/profile/:id'} element={
             <Profile />
           }>
-            <Route path={'/profile/myrecipes'} element={<MyRecipes />} />
-            <Route path={'/profile/liked-recipes'} element={<LikedRecipes />} />
-            <Route path={'/profile/edit-profile'} element={<EditProfile />} />
-            <Route path={'/profile/favorite-profiles'} element={<h1>Favorite Profiles</h1>} />
+            <Route path={'/profile/:id/myrecipes'} element={<MyRecipes />} />
+            <Route path={'/profile/:id/liked-recipes'} element={<LikedRecipes />} />
+            <Route path={'/profile/:id/edit-profile'} element={<EditProfile />} />
+            <Route path={'/profile/:id/favorite-profiles'} element={<h1>Favorite Profiles</h1>} />
           </Route>
 
         </Routes>

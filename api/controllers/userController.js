@@ -12,6 +12,9 @@ export const getUser = async (req, res, next) => {
         next(error)
     }
 }
+export const getUserRecipes = async (req, res, next) => {
+
+}
 export const editprofile = async (req, res, next) => {
 
     console.log(req.body);
