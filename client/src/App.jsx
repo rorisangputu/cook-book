@@ -10,6 +10,10 @@ import Footer from './components/Footer';
 import About from './pages/About';
 import Contacts from './pages/Contacts';
 import Profile from './pages/Profile';
+import MyRecipes from './components/Profile/MyRecipes';
+import EditProfile from './components/Profile/EditProfile';
+import LikeRecipes from './components/Profile/LikedRecipes';
+import LikedRecipes from './components/Profile/LikedRecipes';
 function App() {
   return (
     <div className='flex flex-col justify-between min-h-screen'>
@@ -43,9 +47,9 @@ function App() {
           <Route path={'/profile'} element={
             <Profile />
           }>
-            <Route path={'/profile/myrecipes'} element={<h1>My Recipes</h1>} />
-            <Route path={'/profile/liked-recipes'} element={<h1>Liked Recipes</h1>} />
-            <Route path={'/profile/edit-profile'} element={<h1>Edit Profile</h1>} />
+            <Route path={'/profile/myrecipes'} element={<MyRecipes />} />
+            <Route path={'/profile/liked-recipes'} element={<LikedRecipes />} />
+            <Route path={'/profile/edit-profile'} element={<EditProfile />} />
             <Route path={'/profile/favorite-profiles'} element={<h1>Favorite Profiles</h1>} />
           </Route>
 

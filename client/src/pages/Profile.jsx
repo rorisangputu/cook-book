@@ -1,9 +1,15 @@
-
 import { Link, Outlet } from 'react-router-dom';
 import foodpic from '../assets/foodpic.jpg';
 import propic from '../assets/profilepic.jpg';
+import getCurrentUser from "../utils/getCurrentUser";
+
 
 const Profile = () => {
+    const currentUser = getCurrentUser();
+
+    if (!currentUser) {
+        return <div>Please log in to view your profile.</div>;
+    }
     return (
         <div className='w-full min-h-screen'>
             <div className='w-[90%] md:container rounded-tl-xl mx-auto rounded-tr-xl'>
@@ -16,7 +22,7 @@ const Profile = () => {
                             <img src={propic} alt="" className='w-16 h-16 rounded-full' />
                             <div>
                                 <h1>Rorisang</h1>
-                                <Link to=''>
+                                <Link to='edit-profile'>
                                     <p className='text-[#a9a9a9]'>Edit profile</p>
                                 </Link>
                             </div>
@@ -24,12 +30,12 @@ const Profile = () => {
                         <div className='flex my-2'>
                             <ul className='flex gap-3 w-full text-center justify-between items-center lg:justify-around '>
                                 <li className='font-medium hover:underline hover:text-[#a9a9a9] w-1/3'>
-                                    <Link>
+                                    <Link to='myrecipes'>
                                         My Recipes
                                     </Link>
                                 </li>
                                 <li className='font-medium hover:underline hover:text-[#a9a9a9] w-1/3'>
-                                    <Link>
+                                    <Link to={'liked-recipes'}>
                                         Likes
                                     </Link>
                                 </li>
