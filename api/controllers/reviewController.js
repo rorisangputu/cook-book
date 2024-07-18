@@ -3,37 +3,28 @@ import Review from "../models/reviewModel.js";
 import Recipe from "../models/recipeModel.js";
 
 export const createReview = async (req, res, next) => {
-
-
-    const newReview = new Review({
-        userId: req.userId,
-        gigId: req.body.gigId,
-        desc: req.body.desc,
-        star: req.body.star
-    });
+    const { user, recipe, rating, comment, userImg } = req.body;
 
     try {
-        const review = await Review.findOne({
-            gigId: req.body.gigId,
-            userId: req.userId
+        const newReview = new Review({
+            user: mongoose.Types.ObjectId(user),
+            recipe: mongoose.Types.ObjectId(recipe),
+            rating,
+            comment,
+            userImg
         });
 
-        if (review)
-            return next(
-                createError(403, "You have already created a review for this gig")
-            );
         const savedReview = await newReview.save();
-
-        await Gig.findByIdAndUpdate(req.body.gigId, { $inc: { totalStars: req.body.star, starNumber: 1 } })
-        res.status(201).send(savedReview);
+        res.status(201).json(savedReview);
     } catch (error) {
-        next(error)
+        res.status(500).json({ error: 'Failed to create review' });
     }
+
 }
 
 export const getReviews = async (req, res, next) => {
     try {
-        const reviews = await Review.find({ gigId: req.params.gigId });
+        const reviews = await Review.find({ recipeId: req.params.id });
         res.status(200).send(reviews);
     } catch (error) {
         next(error)

@@ -3,7 +3,7 @@ import newRequest from "../../utils/newRequest";
 
 const ReviewForm = ({ recipe, currentUser }) => {
     const [review, setReview] = useState('');
-    const [rating, setRating] = useState(3);
+    const [rating, setRating] = useState(0);
     const [error, setError] = useState(null);
 
     const handleSubmit = async (e) => {
@@ -34,9 +34,29 @@ const ReviewForm = ({ recipe, currentUser }) => {
     return (
         <div className='w-full md:w-[60%]'>
             {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-            <form action="" className='flex flex-col'>
+            <form onSubmit={handleSubmit} className='flex flex-col'>
                 <label className='font-semibold text-[20px] my-1'>Post a review:</label>
-                <textarea name="" cols={40} rows={5} className='border rounded-lg border-gray-300 p-1' id=""></textarea>
+                <textarea
+                    value={review}
+                    onChange={(e) => setReview(e.target.value)}
+                    cols={40}
+                    rows={5}
+                    className='border rounded-lg border-gray-300 p-1' id="">
+
+                </textarea>
+                <div className="flex">
+                    <label className="mr-2" htmlFor="">Rating:</label>
+                    <input
+                        type="number"
+                        value={rating}
+                        onChange={(e) =>
+                            // Ensure value is between 1 and 5
+                            setRating(e.target.value)}
+                        min={1}
+                        max={5}
+                        className="w-10 border text-center"
+                    /> <p>/5</p>
+                </div>
                 <button className='bg-[#1d9451] p-2 w-full md:w-[20%] text-white rounded-md my-2'>Submit</button>
             </form>
         </div>
