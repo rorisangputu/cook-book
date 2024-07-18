@@ -3,7 +3,7 @@ import User from "../models/userModel.js";
 export const getUser = async (req, res, next) => {
     const userId = req.params.id
     try {
-        const user = await User.findById(userId);
+        const user = await User.findById(userId).select('-password');
         if (!user)
             return next(createError(404, "User not found"))
 
