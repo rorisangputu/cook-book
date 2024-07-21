@@ -31,7 +31,10 @@ export const createReview = async (req, res, next) => {
 };
 
 export const getReviews = async (req, res, next) => {
-
+    const recipeId = req.params.id;
+    const reviews = await Review.find({ recipe: recipeId }).populate('user', ['username', 'img']);
+    //console.log('Reviews:', reviews);
+    res.json(reviews);
 }
 
 export const deleteReview = async (req, res, next) => {

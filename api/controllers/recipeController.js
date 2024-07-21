@@ -20,7 +20,7 @@ export const getRecipes = async (req, res, next) => {
 
     const recipes = await Recipe.find().populate('author', ['username']);
     res.send(recipes);
-    console.log(recipes)
+    //console.log(recipes)
 }
 export const getPopularRecipes = async (req, res, next) => {
 

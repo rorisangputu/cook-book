@@ -77,9 +77,9 @@ const Recipe = () => {
                     </div>
                 ) : ("")}
                 <div className='mx-4 my-3'>
-                    <p>{recipeDet.reviews}</p>
+                    {/* <p>{recipeDet.reviews}</p> */}
                     {recipeDet.reviews ? (
-                        <div >
+                        <div>
                             <Review id={recipeDet._id} />
                         </div>
                     ) : (
