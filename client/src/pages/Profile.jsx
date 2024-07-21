@@ -3,7 +3,6 @@ import foodpic from '../assets/foodpic.jpg';
 import getCurrentUser from "../utils/getCurrentUser";
 import { useState, useEffect } from 'react';
 
-
 const Profile = () => {
     const [user, setUser] = useState(null);
     const navigate = useNavigate();
@@ -18,6 +17,7 @@ const Profile = () => {
                 if (response.status === 401) {
                     // Handle unauthorized access
                     console.error("Unauthorized access");
+                    navigate('/login');
                     return;
                 }
 

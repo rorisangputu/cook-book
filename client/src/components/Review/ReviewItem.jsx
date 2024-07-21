@@ -1,12 +1,13 @@
 // ReviewItem.jsx
 import { MdOutlineDelete } from "react-icons/md";
-import newRequest from "../../utils/newRequest";
+//import newRequest from "../../utils/newRequest";
+import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 const ReviewItem = ({ review, onDelete }) => {
 
     const [error, setError] = useState(null);
-
+    const navigate = useNavigate();
     const handleDelete = (e) => {
         e.preventDefault();
 
@@ -19,6 +20,9 @@ const ReviewItem = ({ review, onDelete }) => {
             .then(response => {
                 if (response.ok) {
                     onDelete(review._id); // Notify the parent component to remove the review
+                } if (response.status === 401) {
+                    alert('Session expired or unauthorized. Please log in again.');
+                    navigate('/login');
                 } else {
                     return response.json().then(err => { throw new Error(err.message); });
                 }

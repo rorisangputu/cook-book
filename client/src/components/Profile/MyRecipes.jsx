@@ -2,10 +2,12 @@ import { useEffect, useState } from 'react'
 import RecipeItem from '../RecipeItem';
 import { useParams } from 'react-router-dom';
 import getCurrentUser from '../../utils/getCurrentUser';
+import { useNavigate } from 'react-router-dom';
 
 const MyRecipes = () => {
     const [recipes, setRecipes] = useState([]);
     const { id } = useParams();
+    const navigate = useNavigate();
     useEffect(() => {
         const fetchData = async () => {
             try {
@@ -16,6 +18,7 @@ const MyRecipes = () => {
                 if (response.status === 401) {
                     // Handle unauthorized access
                     console.error("Unauthorized access");
+                    navigate('http://localhost:5173/login');
                     return;
                 }
 
