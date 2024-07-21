@@ -4,10 +4,11 @@ import { RiFireLine } from "react-icons/ri";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import ReviewForm from "../components/Review/ReviewForm";
-import ReviewItem from "../components/Review/ReviewItem";
+
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import getCurrentUser from "../utils/getCurrentUser";
+import Review from "../components/Review/Review";
 
 const Recipe = () => {
     const currentUser = getCurrentUser();
@@ -19,7 +20,7 @@ const Recipe = () => {
         fetch(`http://localhost:8800/recipes/recipe/${id}`)
             .then(response => response.json())
             .then(data => {
-                console.log('Recipe Data:', data); // Check the full data structure here
+                //console.log('Recipe Data:', data); // Check the full data structure here
                 setRecipeDet(data);
             })
             .catch(error => console.error('Error fetching recipe:', error));
@@ -77,13 +78,10 @@ const Recipe = () => {
                 ) : ("")}
                 <div className='mx-4 my-3'>
                     <p>{recipeDet.reviews}</p>
-                    {Array.isArray(recipeDet.reviews) && recipeDet.reviews.length > 0 ? (
-                        recipeDet.reviews.map((review) => (
-                            <div key={review._id}>
-                                <p>{review.comment}</p>
-                                <p>Rating: {review.rating}</p>
-                            </div>
-                        ))
+                    {recipeDet.reviews ? (
+                        <div >
+                            <Review id={recipeDet._id} />
+                        </div>
                     ) : (
                         <p>No reviews yet. Be the first to review this recipe!</p>
                     )}

@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
-
 import ReviewItem from "./ReviewItem";
-import { useParams } from "react-router-dom";
-const Review = () => {
-    const { id } = useParams;
+
+const Review = ({ id }) => {
+
     const [reviews, setReviews] = useState([]);
 
     console.log(id); // returning undefined
@@ -30,7 +29,7 @@ const Review = () => {
                     <ReviewItem key={index} review={review} />
                 ))
             ) : (
-                <p>No reviews yet. Be the first to review this recipe!</p>
+                <p>No reviews yet. Be the first to review this recipe! Shoot a fuck nigga</p>
             )}
         </div>
     )
