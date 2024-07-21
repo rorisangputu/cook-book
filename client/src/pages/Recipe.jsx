@@ -3,21 +3,27 @@ import { BsBarChart } from "react-icons/bs";
 import { RiFireLine } from "react-icons/ri";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
-import Review from '../components/Review';
+import ReviewForm from "../components/Review/ReviewForm";
+import ReviewItem from "../components/Review/ReviewItem";
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ReviewForm from "../components/Review/ReviewForm";
 import getCurrentUser from "../utils/getCurrentUser";
+
 const Recipe = () => {
     const currentUser = getCurrentUser();
     const [recipeDet, setRecipeDet] = useState(null);
     const { id } = useParams();
 
     useEffect(() => {
+        // In your API call or server response handler
         fetch(`http://localhost:8800/recipes/recipe/${id}`)
             .then(response => response.json())
-            .then(recipe => setRecipeDet(recipe))
+            .then(data => {
+                console.log('Recipe Data:', data); // Check the full data structure here
+                setRecipeDet(data);
+            })
             .catch(error => console.error('Error fetching recipe:', error));
+
     }, [id]);
 
     if (!recipeDet) return null;
@@ -67,13 +73,16 @@ const Recipe = () => {
                 {currentUser ? (
                     <div className="my-2 mx-4">
                         <ReviewForm recipe={recipeDet} currentUser={currentUser} />
-                    </div>) : ("")
-                }
+                    </div>
+                ) : ("")}
                 <div className='mx-4 my-3'>
-                    <h2 className='text-[19px] font-semibold'>Reviews</h2>
-                    {recipeDet.reviews && recipeDet.reviews.length > 0 ? (
-                        recipeDet.reviews.map((review, index) => (
-                            <Review key={index} review={review} />
+                    <p>{recipeDet.reviews}</p>
+                    {Array.isArray(recipeDet.reviews) && recipeDet.reviews.length > 0 ? (
+                        recipeDet.reviews.map((review) => (
+                            <div key={review._id}>
+                                <p>{review.comment}</p>
+                                <p>Rating: {review.rating}</p>
+                            </div>
                         ))
                     ) : (
                         <p>No reviews yet. Be the first to review this recipe!</p>
