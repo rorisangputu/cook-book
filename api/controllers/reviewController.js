@@ -38,9 +38,14 @@ export const getReviews = async (req, res, next) => {
 }
 
 export const deleteReview = async (req, res, next) => {
+    const reviewId = req.params.id;
+    console.log(reviewId);
     try {
-
+        const deletedReview = await Review.findByIdAndDelete(reviewId);
+        res.status(200).send('Review deleted successfully');
     } catch (error) {
-        next(error)
+        console.error('Error deleting review:', error);
+        res.status(500).send('Failed to delete review');
     }
-}
+};
+

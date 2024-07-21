@@ -30,7 +30,11 @@ const Login = () => {
 
             if (res.ok) {
                 alert('Log In Successful')
+            } else if (res.status === 401) {
+                // Handle unauthorized status
+                alert('Session expired or unauthorized. Please log in again.');
             }
+            // Redirect to login or perform other actions
         } catch (err) {
             setError(err.response.data);
         }

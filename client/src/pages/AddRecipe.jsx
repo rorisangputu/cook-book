@@ -56,11 +56,17 @@ const AddRecipe = () => {
         const url = await upload(file);
         const text = content
         try {
-            await newRequest.post("recipes/createRecipe", {
+            const res = await newRequest.post("recipes/createRecipe", {
                 ...recipe,
                 img: url, content: text
             });
             setRedirect(true)
+            if (res.ok) {
+                alert('Log In Successful')
+            } else if (res.status === 401) {
+                alert('Session expired or unauthorized. Please log in again.');
+                navigate('/login');
+            }
         } catch (err) {
             console.log(err);
         }

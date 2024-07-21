@@ -1,6 +1,6 @@
 import { useState } from "react"
 import newRequest from "../../utils/newRequest";
-
+import { useNavigate } from "react-router-dom";
 const ReviewForm = ({ recipe, currentUser }) => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ const ReviewForm = ({ recipe, currentUser }) => {
         rating: '',
         comment: '',
     })
-
+    const navigate = useNavigate();
     const handleChange = (e) => [
         setReview({
             ...review,
@@ -24,7 +24,10 @@ const ReviewForm = ({ recipe, currentUser }) => {
         try {
             const response = await newRequest.post('reviews/createReview', review);
             if (response.ok) {
-                alert('Review posted')
+                alert('Log In Successful')
+            } else if (response.status === 401) {
+                alert('Session expired or unauthorized. Please log in again.');
+                navigate('/login');
             }
         } catch (error) {
             setError("Something went wrong. Please try again.");
