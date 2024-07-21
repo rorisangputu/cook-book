@@ -5,7 +5,7 @@ const ReviewItem = ({ review }) => {
     return (
         <div className='border-b border-gray-300 py-2'>
             <div className='flex items-center'>
-                <p>{review.recipe}</p>
+                {/* <p>{review.recipe}</p> */}
                 {/* Assuming review.user.username and review.user.userImg exist */}
                 {review.user.img ? (
                     <>

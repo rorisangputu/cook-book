@@ -5,7 +5,7 @@ const Review = ({ id }) => {
 
     const [reviews, setReviews] = useState([]);
 
-    console.log(id); // returning undefined
+    // console.log(id); // returning undefined
 
     useEffect(() => {
         if (id) { // Check if id exists
