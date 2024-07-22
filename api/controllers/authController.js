@@ -15,7 +15,7 @@ export const register = async (req, res, next) => {
         });
         await newUser.save();
         res.status(201).send('User has been created');
-        console.log(newUser);
+        //console.log(newUser);
     } catch (error) {
         next(error)
     }
@@ -47,7 +47,7 @@ export const login = async (req, res, next) => {
             maxAge: 60 * 60 * 1000, // 1 hour
         }).status(200).send(info);
 
-        console.log("User logged in");
+        //console.log("User logged in");
     } catch (err) {
         console.error(err);
         next(err);

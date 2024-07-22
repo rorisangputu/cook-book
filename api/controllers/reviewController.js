@@ -39,7 +39,7 @@ export const getReviews = async (req, res, next) => {
 
 export const deleteReview = async (req, res, next) => {
     const reviewId = req.params.id;
-    console.log(reviewId);
+    //console.log(reviewId);
     try {
         const deletedReview = await Review.findByIdAndDelete(reviewId);
         res.status(200).send('Review deleted successfully');

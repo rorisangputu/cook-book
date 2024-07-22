@@ -8,7 +8,7 @@ export const createRecipe = async (req, res, next) => {
     });
 
     try {
-        console.log(newRecipe);
+        //console.log(newRecipe);
         const savedRecipe = await newRecipe.save();
         res.status(201).json(savedRecipe);
     } catch (error) {
