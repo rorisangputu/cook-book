@@ -25,6 +25,7 @@ const ReviewForm = ({ recipe, currentUser }) => {
             const response = await newRequest.post('reviews/createReview', review);
             if (response.ok) {
                 alert('Log In Successful')
+
             } else if (response.status === 401) {
                 alert('Session expired or unauthorized. Please log in again.');
                 navigate('/login');

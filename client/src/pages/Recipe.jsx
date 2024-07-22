@@ -27,6 +27,8 @@ const Recipe = () => {
 
     }, [id]);
 
+
+
     if (!recipeDet) return null;
 
     return (
@@ -73,7 +75,7 @@ const Recipe = () => {
                 <hr className='border-t border-gray-300 w-[99%] mx-auto' />
                 {currentUser ? (
                     <div className="my-2 mx-4">
-                        <ReviewForm recipe={recipeDet} currentUser={currentUser} />
+                        <ReviewForm recipe={recipeDet} currentUser={currentUser} xs />
                     </div>
                 ) : ("")}
                 <div className='mx-4 my-3'>
