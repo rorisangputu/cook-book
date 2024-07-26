@@ -64,7 +64,7 @@ const AddRecipe = () => {
             });
             setRedirect(true)
             if (res.ok) {
-                alert('Log In Successful')
+                alert('Successful')
             } else if (res.status === 401) {
                 alert('Session expired or unauthorized. Please log in again.');
                 navigate('/login');

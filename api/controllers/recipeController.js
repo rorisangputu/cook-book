@@ -27,7 +27,6 @@ export const getPopularRecipes = async (req, res, next) => {
     const recipes = await Recipe.find().populate('author', ['username']).limit(4);
     res.send(recipes);
 }
-
 export const getRecipe = async (req, res, next) => {
     const recipeId = req.params.id
     try {
@@ -40,8 +39,6 @@ export const getRecipe = async (req, res, next) => {
         next(error)
     }
 }
-
-
 export const editRecipe = async (req, res, next) => {
 
 }

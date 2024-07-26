@@ -49,7 +49,7 @@ const EditRecipe = () => {
             return { ...prev, [e.target.name]: e.target.value };
         });
 
-
+        console.log(recipe);
     };
 
     const handleFileChange = (e) => {
@@ -65,13 +65,13 @@ const EditRecipe = () => {
         const url = await upload(file);
         const text = content
         try {
-            const res = await newRequest.post("recipes/createRecipe", {
+            const res = await newRequest.put(`recipes/editrecipe/${id}`, {
                 ...recipe,
                 img: url, content: text
             });
             setRedirect(true)
             if (res.ok) {
-                alert('Log In Successful')
+                alert('Successful')
             } else if (res.status === 401) {
                 alert('Session expired or unauthorized. Please log in again.');
                 navigate('/login');
@@ -133,6 +133,7 @@ const EditRecipe = () => {
                         <input
                             type="file"
                             className='p-2 border rounded-lg border-[#a3a3a3]'
+                            
                             onChange={handleFileChange}
                         />
                     </div>
