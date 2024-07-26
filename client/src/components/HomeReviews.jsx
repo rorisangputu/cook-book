@@ -4,7 +4,7 @@ import HomeReview from './HomeReview';
 const reviews = [
     {
         id: 1,
-        title: "Grilled Toasted Cheese and Bacon",
+        title: "Toasted Bacon and Cheese",
         author: "Rorisang",
         rating: 4,
         content: "This is the best recipe I have made in ages. The addition of parsley in the cheese as well as the salted tomatoes make this an exquisite meal.",
@@ -39,9 +39,9 @@ const reviews = [
 const HomeReviews = () => {
     return (
         <div className="w-full bg-[#f7f7f7] py-12">
-            <div className="w-[90%] md:w-[80%] lg:w-[70%] xl:w-[60%] mx-auto">
+            <div className="w-[90%] md:w-[90%] lg:w-[80%] xl:w-[70%] mx-auto border">
                 <h1 className="text-center mb-10 text-3xl md:text-4xl font-semibold">Fresh From Our Community</h1>
-                <div className="grid grid-cols-1 sm:grid-cols-2  gap-10">
+                <div className="grid grid-cols-1 sm:grid-cols-2  gap-5">
                     {reviews.map((review) => (
                         <HomeReview key={review.id} review={review} />
                     ))}
