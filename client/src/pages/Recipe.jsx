@@ -4,10 +4,10 @@ import { RiFireLine } from "react-icons/ri";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
 import { FiEdit } from "react-icons/fi";
-import ReviewForm from "../components/Review/ReviewForm";
 
+import ReviewForm from "../components/Review/ReviewForm";
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import getCurrentUser from "../utils/getCurrentUser";
 import Review from "../components/Review/Review";
 
@@ -45,13 +45,18 @@ const Recipe = () => {
                             <p className="text-xs md:text-[15px]">By {recipeDet.author.username}</p>
                         </div>
                         <div className='flex gap-5 items-center'>
-                            {currentUser._id == recipeDet.author._id ? 
+                            {/* {currentUser?._id == recipeDet.author._id ? 
                                 (
-                                    <FiEdit className='h-6 w-6 cursor-pointer' />
+                                    <Link to={'/editrecipe'}>
+                                        <FiEdit className='h-6 w-6 cursor-pointer' />
+                                    </Link>
                                 ):(
                                     ""
                                 )
-                            }
+                            } */}
+                            <Link to={`/editrecipe/${recipeDet._id}`}>
+                                <FiEdit className='h-6 w-6 cursor-pointer' />
+                            </Link>
                             <FaRegBookmark className='h-6 w-6 cursor-pointer' />
                             <FiShare className='h-6 w-6 cursor-pointer' />
                         </div>

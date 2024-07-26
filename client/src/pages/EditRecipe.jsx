@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'; // Correct import
+import { useNavigate, useParams } from 'react-router-dom'; // Correct import
 import 'react-quill/dist/quill.snow.css';
 import Editor from '../components/Editor';
 import upload from "../utils/upload.js";
 import newRequest from "../utils/newRequest.js";
 
-const AddRecipe = () => {
-
+const EditRecipe = () => {
+    const {id} = useParams();
     const [file, setFile] = useState([]);
     const [content, setContent] = useState('');
     const [recipe, setRecipe] = useState({
@@ -19,7 +19,20 @@ const AddRecipe = () => {
         difficulty: ""
     });
 
-
+    useEffect(() => {
+        const fetchRecipe = async () => {
+            try {
+                const res = await newRequest.get(`recipes/recipe/${id}`);
+                const newRecipe = await res.data;
+                //console.log(newRecipe)
+                setRecipe(newRecipe);
+                setContent(newRecipe.content);
+            } catch (err) {
+                console.error("Failed to fetch recipe", err);
+            }
+        };
+        fetchRecipe();
+    }, [id]);
 
     const [redirect, setRedirect] = useState(false);
 
@@ -39,18 +52,12 @@ const AddRecipe = () => {
 
     };
 
-    // useEffect(() => {
-    //     console.log("File state updated:", file);
-    // }, [file]);
-
     const handleFileChange = (e) => {
         const selectedFile = e.target.files[0];
         console.log("Selected file:", selectedFile);
         setFile(selectedFile);
 
     };
-
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -73,18 +80,17 @@ const AddRecipe = () => {
             console.log(err);
         }
     };
-
-
-
-    return (
+  return (
         <div className='w-full'>
             <div className='w-[90%] md:container lg:w-[90%] xl:container mx-auto'>
-                <h1 className='mt-4 text-[17px]'>Create Recipe</h1>
-                <form action="" onSubmit={handleSubmit} className='flex flex-col gap-y-4 my-5 md:w-[90%] md:mx-auto'>
-                    <input type="text"
+                <h1 className='mt-4 text-[17px]'>Edit Recipe</h1>
+                <form onSubmit={handleSubmit} className='flex flex-col gap-y-4 my-5 md:w-[90%] md:mx-auto'>
+                    <input
+                        type="text"
                         placeholder={'Name'}
                         className='border rounded-lg h-10 border-[#a4a4a4] p-2'
                         name='name'
+                        value={recipe.name}
                         onChange={handleChange}
                     />
                     <input
@@ -92,6 +98,7 @@ const AddRecipe = () => {
                         placeholder={'Description'}
                         className='border rounded-lg h-10 border-[#a4a4a4] p-2'
                         name='desc'
+                        value={recipe.desc}
                         onChange={handleChange}
                     />
                     <input
@@ -99,6 +106,7 @@ const AddRecipe = () => {
                         placeholder={'Cuisine'}
                         className='border rounded-lg h-10 border-[#a4a4a4] p-2'
                         name='cuisine'
+                        value={recipe.cuisine}
                         onChange={handleChange}
                     />
                     <input
@@ -106,12 +114,13 @@ const AddRecipe = () => {
                         placeholder={'Category'}
                         className='border rounded-lg h-10 border-[#a4a4a4] p-2'
                         name='category'
+                        value={recipe.category}
                         onChange={handleChange}
                     />
-
                     <select
                         className='border rounded-lg h-10 border-[#a4a4a4] p-2'
                         name='difficulty'
+                        value={recipe.difficulty}
                         onChange={handleChange}
                         required
                     >
@@ -119,7 +128,6 @@ const AddRecipe = () => {
                         <option value="Medium">Medium</option>
                         <option value="Advanced">Advanced</option>
                     </select>
-
                     <div>
                         <label>Image</label>
                         <input
@@ -130,11 +138,11 @@ const AddRecipe = () => {
                     </div>
                     <p className='text-[#5a5a5a] text-sm'>Add ingredients and instructions below:</p>
                     <Editor value={content} onChange={setContent} />
-                    <button className='bg-[#171717] text-white h-10 cursor-pointer rounded-lg'>Create Recipe</button>
+                    <button className='bg-[#171717] text-white h-10 cursor-pointer rounded-lg'>Update Recipe</button>
                 </form>
             </div>
         </div>
-    )
+    );
 }
 
-export default AddRecipe
+export default EditRecipe

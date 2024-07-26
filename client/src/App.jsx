@@ -13,6 +13,7 @@ import Profile from './pages/Profile';
 import MyRecipes from './components/Profile/MyRecipes';
 import EditProfile from './components/Profile/EditProfile';
 import LikedRecipes from './components/Profile/LikedRecipes';
+import EditRecipe from './pages/EditRecipe';
 function App() {
   return (
     <div className='flex flex-col justify-between min-h-screen'>
@@ -36,6 +37,9 @@ function App() {
           } />
           <Route path={'/recipes'} element={
             <RecipePage />
+          } />
+          <Route path={'/editrecipe/:id'} element={
+            <EditRecipe />
           } />
           <Route path={'/about'} element={
             <About />

@@ -10,6 +10,6 @@ router.post('/createRecipe', verifyToken, createRecipe)
 router.get('/', getRecipes)
 router.get('/popularRecipes', getPopularRecipes)
 router.get('/recipe/:id', getRecipe)
-router.put('editrecipe/:id', verifyToken, editRecipe)
+router.put('/editrecipe/:id', verifyToken, editRecipe)
 
 export default router;
