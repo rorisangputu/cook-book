@@ -3,6 +3,7 @@ import { BsBarChart } from "react-icons/bs";
 import { RiFireLine } from "react-icons/ri";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
+import { FiEdit } from "react-icons/fi";
 import ReviewForm from "../components/Review/ReviewForm";
 
 import { useEffect, useState } from 'react';
@@ -44,6 +45,13 @@ const Recipe = () => {
                             <p className="text-xs md:text-[15px]">By {recipeDet.author.username}</p>
                         </div>
                         <div className='flex gap-5 items-center'>
+                            {currentUser._id == recipeDet.author._id ? 
+                                (
+                                    <FiEdit className='h-6 w-6 cursor-pointer' />
+                                ):(
+                                    ""
+                                )
+                            }
                             <FaRegBookmark className='h-6 w-6 cursor-pointer' />
                             <FiShare className='h-6 w-6 cursor-pointer' />
                         </div>
