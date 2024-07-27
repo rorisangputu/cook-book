@@ -99,7 +99,7 @@ const EditProfile = () => {
                     <div className="text-center">
                         <p className="text-green-500 mb-4">Edit successful.</p>
                         <Link to={`/profile/${id}`}>
-                            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
+                            <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline">
                                 Go back to Profile
                             </button>
                         </Link>
