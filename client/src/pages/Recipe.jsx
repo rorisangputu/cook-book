@@ -45,7 +45,7 @@ const Recipe = () => {
                             <p className="text-xs md:text-[15px]">By {recipeDet.author.username}</p>
                         </div>
                         <div className='flex gap-5 items-center'>
-                            {/* {currentUser?._id == recipeDet.author._id ? 
+                            {currentUser?._id == recipeDet.author._id ? 
                                 (
                                     <Link to={'/editrecipe'}>
                                         <FiEdit className='h-6 w-6 cursor-pointer' />
@@ -53,10 +53,8 @@ const Recipe = () => {
                                 ):(
                                     ""
                                 )
-                            } */}
-                            <Link to={`/editrecipe/${recipeDet._id}`}>
-                                <FiEdit className='h-6 w-6 cursor-pointer' />
-                            </Link>
+                            }
+                            
                             <FaRegBookmark className='h-6 w-6 cursor-pointer' />
                             <FiShare className='h-6 w-6 cursor-pointer' />
                         </div>

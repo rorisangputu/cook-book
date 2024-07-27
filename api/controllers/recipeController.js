@@ -66,3 +66,7 @@ export const editRecipe = async (req, res, next) => {
     }
     
 };
+
+export const deleteRecipe = async (req, res, next) => {
+    
+}
