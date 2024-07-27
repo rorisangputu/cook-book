@@ -1,5 +1,5 @@
 import { IoIosStar } from "react-icons/io";
-import pict from '../assets/profilepic.jpg';
+
 
 const HomeReview = ({ review }) => {
     return (
@@ -7,7 +7,7 @@ const HomeReview = ({ review }) => {
             <div className="flex flex-col w-[90%] mx-auto gap-3 p-5 shadow-lg bg-white rounded-2xl h-full">
                 <div className="flex gap-5 items-center">
                     <div className="">
-                        <img src={pict} className="rounded-full h-12" alt="" />
+                        <img src={review.profilepic} className="rounded-full w-12 object-cover h-12" alt="" />
                     </div>
                     <div className="flex flex-col justify-between h-auto">
                         <h4 className="text-lg font-medium text-orange-500">{review.title}</h4>
