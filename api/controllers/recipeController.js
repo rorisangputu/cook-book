@@ -40,5 +40,8 @@ export const getRecipe = async (req, res, next) => {
     }
 }
 export const editRecipe = async (req, res, next) => {
-
+    const recipe = req.body;
+    
+    const token = req.cookies.accessToken;
+    console.log(recipe.author._id, token);
 }

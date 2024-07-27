@@ -27,6 +27,7 @@ const EditRecipe = () => {
                 //console.log(newRecipe)
                 setRecipe(newRecipe);
                 setContent(newRecipe.content);
+                
             } catch (err) {
                 console.error("Failed to fetch recipe", err);
             }
@@ -34,7 +35,7 @@ const EditRecipe = () => {
         fetchRecipe();
     }, [id]);
 
-    const [redirect, setRedirect] = useState(false);
+   const [redirect, setRedirect] = useState(false);
 
     const navigate = useNavigate();
 
@@ -49,7 +50,7 @@ const EditRecipe = () => {
             return { ...prev, [e.target.name]: e.target.value };
         });
 
-        console.log(recipe);
+        //console.log(recipe);
     };
 
     const handleFileChange = (e) => {
@@ -62,12 +63,29 @@ const EditRecipe = () => {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
-        const url = await upload(file);
+        let url = recipe.img; // Default to existing image URL
+
+        if (file) {
+            try {
+                url = await upload(file);
+            } catch (err) {
+                if (err.response && err.response.status === 404) {
+                    console.error("Image upload failed with 404 status, using existing image URL");
+                } else {
+                    console.error("Image upload failed", err);
+                    return; // Exit if other errors occur
+                }
+            }
+        }
+        
         const text = content
+
+        
         try {
             const res = await newRequest.put(`recipes/editrecipe/${id}`, {
                 ...recipe,
-                img: url, content: text
+                img: url, content: text,
+                credentials: 'include'
             });
             setRedirect(true)
             if (res.ok) {
