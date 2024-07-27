@@ -23,7 +23,10 @@ const Profile = () => {
 
                 const user = await response.json();
                 setUser(user);
-                navigate(`/profile/${id}/myrecipes`);
+                // Navigate to 'myrecipes' if it's not the current location
+                if (location.pathname === `/profile/${id}`) {
+                    navigate(`/profile/${id}/myrecipes`);
+                }
             } catch (error) {
                 console.error('Error fetching user:', error);
             }
@@ -56,7 +59,7 @@ const Profile = () => {
                             <img src={user.img} alt="" className='w-16 h-16 rounded-full' />
                             <div>
                                 <h1>{user.username}</h1>
-                                <Link to='edit-profile'>
+                                <Link to='editprofile'>
                                     <p className='text-[#a9a9a9]'>Edit profile</p>
                                 </Link>
                             </div>

@@ -50,10 +50,10 @@ function App() {
           <Route path={'/profile/:id'} element={
             <Profile />
           }>
-            <Route path={'/profile/:id/myrecipes'} element={<MyRecipes />} />
-            <Route path={'/profile/:id/liked-recipes'} element={<LikedRecipes />} />
-            <Route path={'/profile/:id/edit-profile'} element={<EditProfile />} />
-            <Route path={'/profile/:id/favorite-profiles'} element={<h1>Favorite Profiles</h1>} />
+            <Route path='myrecipes' element={<MyRecipes />} />
+            <Route path='liked-recipes' element={<LikedRecipes />} />
+            <Route path='editprofile' element={<EditProfile />} />
+            <Route path='favorite-profiles' element={<h1>Favorite Profiles</h1>} />
           </Route>
 
         </Routes>
