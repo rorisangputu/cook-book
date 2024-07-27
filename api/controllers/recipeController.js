@@ -1,4 +1,5 @@
 import Recipe from '../models/recipeModel.js';
+import jwt from 'jsonwebtoken';
 const jwt_secret = process.env.JWT_KEY;
 
 export const createRecipe = async (req, res, next) => {
@@ -39,9 +40,29 @@ export const getRecipe = async (req, res, next) => {
         next(error)
     }
 }
+
 export const editRecipe = async (req, res, next) => {
-    const recipe = req.body;
+    try {
+        const recipeId = req.params.id;
+        const recipe = await Recipe.findById(recipeId);
+
+        if (!recipe) {
+            return res.status(404).json({ message: 'Recipe not found' });
+        }
+
+        // Proceed with updating the recipe
+        const updatedRecipe = {
+            ...req.body,
+            author: recipe.author // Keep the original author
+        };
+
+        //console.log(updatedRecipe);
+        const savedRecipe = await Recipe.findByIdAndUpdate(recipeId, updatedRecipe, { new: true });
+
+        res.status(200).json(savedRecipe);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
     
-    const token = req.cookies.accessToken;
-    console.log(recipe.author._id, token);
-}
+};
