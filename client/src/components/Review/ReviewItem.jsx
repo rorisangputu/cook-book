@@ -13,7 +13,7 @@ const ReviewItem = ({ review, onDelete }) => {
     const handleDelete = (e) => {
         e.preventDefault();
 
-        if (currentUser === review.user._id) {
+        if (currentUser._id === review.user._id) {
             fetch(`http://localhost:8800/reviews/deleteReview/${review._id}`, {
                 method: 'DELETE',
                 credentials: 'include'
