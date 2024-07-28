@@ -4,8 +4,12 @@ import 'react-quill/dist/quill.snow.css';
 import Editor from '../components/Editor';
 import upload from "../utils/upload.js";
 import newRequest from "../utils/newRequest.js";
+import currentUser from '../utils/getCurrentUser.js';
 
 const AddRecipe = () => {
+    const user = currentUser();
+    const id = user._id;
+    const [loading, setLoading] = useState(false);
     const [file, setFile] = useState(null);
     const [content, setContent] = useState('');
     const [recipe, setRecipe] = useState({
@@ -24,9 +28,9 @@ const AddRecipe = () => {
 
     useEffect(() => {
         if (redirect) {
-            navigate('/');
+            navigate(`/profile/${id}/myrecipes`);
         }
-    }, [redirect, navigate]);
+    }, [id, redirect, navigate]);
 
     const handleChange = (e) => {
         setRecipe((prev) => {
@@ -60,6 +64,7 @@ const AddRecipe = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true);
         const newErrors = validateForm();
         if (Object.keys(newErrors).length > 0) {
             setErrors(newErrors);
@@ -78,9 +83,9 @@ const AddRecipe = () => {
                 content
             });
 
-            if (res.status === 200) {
+            if (res.ok || res.status == 201) {
                 setRedirect(true);
-                alert('Recipe created successfully.');
+                //alert('Recipe created successfully.');
             } else if (res.status === 401) {
                 alert('Session expired or unauthorized. Please log in again.');
                 navigate('/login');
@@ -88,6 +93,7 @@ const AddRecipe = () => {
         } catch (err) {
             console.log(err);
             setErrors({ general: 'An unexpected error occurred. Please try again.' });
+            setLoading(false);
         }
     };
 
@@ -159,7 +165,19 @@ const AddRecipe = () => {
                     <Editor value={content} onChange={setContent} />
                     {errors.content && <p className='text-red-500'>{errors.content}</p>}
                     
-                    <button className='bg-[#171717] text-white h-10 cursor-pointer rounded-lg'>Create Recipe</button>
+                    <button className='bg-[#171717] text-white h-10 cursor-pointer rounded-lg'>
+                        {loading ? (
+                                <div className="flex items-center">
+                                    <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"></path>
+                                    </svg>
+                                    Processing...
+                                </div>
+                            ) : (
+                                'Create Recipe'
+                            )}
+                    </button>
                 </form>
                 {errors.general && (
                     <div className='text-red-500 text-center mt-4'>
