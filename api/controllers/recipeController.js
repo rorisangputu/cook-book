@@ -13,7 +13,8 @@ export const createRecipe = async (req, res, next) => {
         const savedRecipe = await newRecipe.save();
         res.status(201).json(savedRecipe);
     } catch (error) {
-        next(error);
+        const errors = Object.values(error.errors).map(err => err.message);
+        return res.status(400).json({ errors });
     }
 }
 
