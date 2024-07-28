@@ -36,7 +36,10 @@ const Login = () => {
             }
             // Redirect to login or perform other actions
         } catch (err) {
-            setError(err.response.data);
+            setError(
+                "Incorrect Username/Password"
+            );
+            setLoading(false);
         }
 
     };
@@ -92,7 +95,9 @@ const Login = () => {
                             )}
                         </button>
                     </div>
-                    {error && error}
+                    <div className='mt-3 text-red-600'>
+                        {error && error}
+                    </div>
                 </form>
             </div>
         </div>

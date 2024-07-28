@@ -23,7 +23,7 @@ const EditProfile = () => {
             try {
                 const res = await newRequest.get(`profile/${id}`);
                 const user = await res.data;
-                console.log(user)
+                //console.log(user)
                 setUser(user);
                 
                 
@@ -41,7 +41,7 @@ const EditProfile = () => {
             [e.target.name]: e.target.value
         });
 
-        console.log(user);
+        //console.log(user);
     };
 
     //Handles file 
@@ -90,6 +90,27 @@ const EditProfile = () => {
 
         //setRedirect(true)
     };
+
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        try {
+            const res = await newRequest.put('profile/:id/editprofile', {
+                ...user,
+                img: url,
+                credentials: 'include'
+            })
+            //setRedirect(true)
+            setSuccess(true);
+            if (res.ok) {
+
+                alert('Registration succesfull. Log In')
+            }
+        } catch (error) {
+            setError("Registration failed. Please try again.");
+        } finally {
+            setLoading(false);
+        }
+    }
     return (
         <div className="min-h-screen flex justify-center">
             <div className="bg-white p-8 rounded-lg max-w-md w-full">
@@ -166,6 +187,26 @@ const EditProfile = () => {
                         </div>
                     </form>
                 )}
+
+                <div className="flex items-center justify-between mt-5">
+                    <button
+                        className={`bg-red-600 hover:bg-red-900 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline ${loading ? 'cursor-not-allowed' : ''}`}
+                        onClick={handleDelete}
+                        disabled={loading}
+                    >
+                        {loading ? (
+                            <div className="flex items-center">
+                                <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">
+                                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.372 0 0 5.372 0 12h4z"></path>
+                                </svg>
+                                Processing...
+                            </div>
+                        ) : (
+                            'Delete Profile'
+                        )}
+                    </button>
+                </div>
             </div>
         </div>
     )
