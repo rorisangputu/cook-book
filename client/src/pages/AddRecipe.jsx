@@ -165,7 +165,7 @@ const AddRecipe = () => {
                     <Editor value={content} onChange={setContent} />
                     {errors.content && <p className='text-red-500'>{errors.content}</p>}
                     
-                    <button className='bg-[#171717] text-white h-10 cursor-pointer rounded-lg'>
+                    <button className='bg-[#171717] text-white h-10 text-center cursor-pointer rounded-lg'>
                         {loading ? (
                                 <div className="flex items-center">
                                     <svg className="animate-spin h-5 w-5 mr-3" viewBox="0 0 24 24">

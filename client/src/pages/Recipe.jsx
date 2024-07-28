@@ -3,7 +3,7 @@ import { BsBarChart } from "react-icons/bs";
 import { RiFireLine } from "react-icons/ri";
 import { FaRegBookmark } from "react-icons/fa6";
 import { FiShare } from "react-icons/fi";
-import { FiEdit } from "react-icons/fi";
+import { FiEdit, FiTrash2 } from "react-icons/fi";
 
 import ReviewForm from "../components/Review/ReviewForm";
 import { useEffect, useState } from 'react';
@@ -14,7 +14,7 @@ import Review from "../components/Review/Review";
 const Recipe = () => {
     const currentUser = getCurrentUser();
     const [recipeDet, setRecipeDet] = useState(null);
-    const [reload, setReload] = useState(false);
+    
     const { id } = useParams();
 
     useEffect(() => {
@@ -29,6 +29,19 @@ const Recipe = () => {
 
     }, [id]);
 
+    const handleDelete = async () => {
+        if (window.confirm("Are you sure you want to delete this recipe?")) {
+            try {
+                const res = await newRequest.delete(`recipes/recipe/${id}`);
+                if (res.status === 200) {
+                    alert('Recipe deleted successfully.');
+                    navigate('/'); // Redirect to home after deletion
+                }
+            } catch (err) {
+                console.error('Error deleting recipe:', err);
+            }
+        }
+    };
 
 
     if (!recipeDet) return null;
@@ -48,16 +61,17 @@ const Recipe = () => {
                         <div className='flex gap-5 items-center'>
                             {currentUser?._id == recipeDet.author._id ? 
                                 (
-                                    <Link to={'/editrecipe'}>
-                                        <FiEdit className='h-6 w-6 cursor-pointer' />
-                                    </Link>
+                                    <>
+                                        <Link to={'/editrecipe'}>
+                                            <FiEdit className='h-6 w-6 cursor-pointer' />
+                                        </Link>
+                                        <FiTrash2 className='h-6 w-6 cursor-pointer' onClick={handleDelete} />
+                                    </>
                                 ):(
                                     ""
                                 )
                             }
                             
-                            <FaRegBookmark className='h-6 w-6 cursor-pointer' />
-                            <FiShare className='h-6 w-6 cursor-pointer' />
                         </div>
                     </div>
                     <div className="flex gap-3 my-3 text-[#737373]">
