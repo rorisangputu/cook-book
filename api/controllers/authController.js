@@ -59,3 +59,17 @@ export const logout = async (req, res, next) => {
         secure: true,
     }).status(200).send("User has been logged out");
 }
+
+export const deleteUser = async (req, res) => {
+    //console.log(req.params.id)
+    try {
+        const userId = req.params.id;
+        await User.findByIdAndDelete(userId); // Assuming User is your user model
+        res.clearCookie("accessToken", {
+        sameSite: "none",
+        secure: true,
+        }).status(200).json({ message: 'User deleted successfully.' });
+    } catch (err) {
+        res.status(500).json({ message: 'Failed to delete user.', error: err.message });
+    }
+};

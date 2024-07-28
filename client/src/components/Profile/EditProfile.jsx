@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 //import { useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom'; // Correct import
-//import { useNavigate } from 'react-router-dom'; // Correct import
+import { useNavigate } from 'react-router-dom'; // Correct import
 import upload from "../../utils/upload.js";
 import newRequest from "../../utils/newRequest.js";
 
@@ -17,13 +17,15 @@ const EditProfile = () => {
     const [loading, setLoading] = useState(false);
     const [success, setSuccess] = useState(false);
     const [error, setError] = useState(null);
+    const navigate = useNavigate(); 
+
 
     useEffect(() => {
         const fetchRecipe = async () => {
             try {
                 const res = await newRequest.get(`profile/${id}`);
                 const user = await res.data;
-                //console.log(user)
+                console.log(user)
                 setUser(user);
                 
                 
@@ -93,24 +95,26 @@ const EditProfile = () => {
 
     const handleDelete = async (e) => {
         e.preventDefault();
-        try {
-            const res = await newRequest.put('profile/:id/editprofile', {
-                ...user,
-                img: url,
-                credentials: 'include'
-            })
-            //setRedirect(true)
-            setSuccess(true);
-            if (res.ok) {
+        setLoading(true);
 
-                alert('Registration succesfull. Log In')
+        try {
+            const res = await newRequest.delete(`auth/deleteuser/${id}`, { withCredentials: true });
+            if (res.status === 200) {
+                // alert('Profile deleted successfully.');
+                localStorage.setItem("currentUser", null);
+                navigate('/'); // Redirect to home or login page after deletion
+            } else {
+                setError("Failed to delete profile.");
             }
         } catch (error) {
-            setError("Registration failed. Please try again.");
+            setError("Failed to delete profile. Please try again.");
         } finally {
             setLoading(false);
         }
+        
     }
+
+
     return (
         <div className="min-h-screen flex justify-center">
             <div className="bg-white p-8 rounded-lg max-w-md w-full">
