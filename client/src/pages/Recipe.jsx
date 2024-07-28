@@ -1,20 +1,18 @@
 import { IoMdTime } from "react-icons/io";
 import { BsBarChart } from "react-icons/bs";
 import { RiFireLine } from "react-icons/ri";
-import { FaRegBookmark } from "react-icons/fa6";
-import { FiShare } from "react-icons/fi";
 import { FiEdit, FiTrash2 } from "react-icons/fi";
-
 import ReviewForm from "../components/Review/ReviewForm";
 import { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, useNavigate } from 'react-router-dom';
 import getCurrentUser from "../utils/getCurrentUser";
 import Review from "../components/Review/Review";
+import newRequest from "../utils/newRequest";
 
 const Recipe = () => {
     const currentUser = getCurrentUser();
     const [recipeDet, setRecipeDet] = useState(null);
-    
+    const navigate = useNavigate();
     const { id } = useParams();
 
     useEffect(() => {
