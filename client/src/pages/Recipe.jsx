@@ -14,6 +14,7 @@ import Review from "../components/Review/Review";
 const Recipe = () => {
     const currentUser = getCurrentUser();
     const [recipeDet, setRecipeDet] = useState(null);
+    const [reload, setReload] = useState(false);
     const { id } = useParams();
 
     useEffect(() => {

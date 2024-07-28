@@ -36,6 +36,7 @@ const ReviewForm = ({ recipe, currentUser }) => {
         } finally {
             setLoading(false)
             setReview({ user: currentUser._id, recipe: recipe._id, rating: '', comment: '' });
+            window.location.reload();
         }
     }
 
