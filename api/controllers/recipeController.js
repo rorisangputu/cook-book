@@ -69,5 +69,28 @@ export const editRecipe = async (req, res, next) => {
 };
 
 export const deleteRecipe = async (req, res, next) => {
-    
-}
+    const recipeId = req.params.id;
+    try {
+        const recipe = await Recipe.findById(recipeId);
+        if (!recipe) {
+            return res.status(404).json({ message: 'Recipe not found' });
+        }
+
+        await recipe.remove();
+        res.status(200).json({ message: 'Recipe and associated reviews deleted successfully' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
