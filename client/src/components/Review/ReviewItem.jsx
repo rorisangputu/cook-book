@@ -14,7 +14,7 @@ const ReviewItem = ({ review, onDelete }) => {
         e.preventDefault();
 
         if (currentUser._id === review.user._id) {
-            fetch(`http://localhost:8800/reviews/deleteReview/${review._id}`, {
+            fetch(`https://taste-book-api.onrender.com/reviews/deleteReview/${review._id}`, {
                 method: 'DELETE',
                 credentials: 'include'
             })

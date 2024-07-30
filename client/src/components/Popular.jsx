@@ -6,11 +6,17 @@ const Popular = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8800/recipes/popularRecipes')
+        fetch('https://taste-book-api.onrender.com/recipes/popularRecipes')
             .then(res => res.json())
             .then(data => setRecipes(data))
             .catch(err => console.error("Error fetching recipes:", err));
     }, []);
+    // useEffect(() => {
+    //     fetch('http://localhost:8800/recipes/popularRecipes')
+    //         .then(res => res.json())
+    //         .then(data => setRecipes(data))
+    //         .catch(err => console.error("Error fetching recipes:", err));
+    // }, []);
     return (
         <div className="w-full bg-[#f7f7f7]">
             <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto py-2">

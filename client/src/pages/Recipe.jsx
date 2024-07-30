@@ -17,7 +17,7 @@ const Recipe = () => {
 
     useEffect(() => {
         // In your API call or server response handler
-        fetch(`http://localhost:8800/recipes/recipe/${id}`)
+        fetch(`https://taste-book-api.onrender.com/recipes/recipe/${id}`)
             .then(response => response.json())
             .then(data => {
                 //console.log('Recipe Data:', data); // Check the full data structure here
@@ -57,7 +57,7 @@ const Recipe = () => {
                             <p className="text-xs md:text-[15px]">By {recipeDet.author.username}</p>
                         </div>
                         <div className='flex gap-5 items-center'>
-                            {currentUser?._id == recipeDet.author._id ? 
+                            {currentUser?._id == recipeDet.author._id ?
                                 (
                                     <>
                                         <Link to={'/editrecipe'}>
@@ -65,11 +65,11 @@ const Recipe = () => {
                                         </Link>
                                         <FiTrash2 className='h-6 w-6 cursor-pointer' onClick={handleDelete} />
                                     </>
-                                ):(
+                                ) : (
                                     ""
                                 )
                             }
-                            
+
                         </div>
                     </div>
                     <div className="flex gap-3 my-3 text-[#737373]">

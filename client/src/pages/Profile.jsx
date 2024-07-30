@@ -10,9 +10,12 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:8800/profile/${id}`, {
+                const response = await fetch(`https://taste-book-api.onrender.com/profile/${id}`, {
                     credentials: 'include'
                 });
+                // const response = await fetch(`http://localhost:8800/profile/${id}`, {
+                //     credentials: 'include'
+                // });
 
                 if (response.status === 401) {
                     // Handle unauthorized access

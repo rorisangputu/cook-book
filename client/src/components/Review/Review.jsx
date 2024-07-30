@@ -9,7 +9,7 @@ const Review = ({ id }) => {
 
     useEffect(() => {
         if (id) { // Check if id exists
-            fetch(`http://localhost:8800/reviews/${id}`)
+            fetch(`https://taste-book-api.onrender.com/reviews/${id}`)
                 .then(res => res.json())
                 .then(data => {
                     //console.log(data); // Check the response

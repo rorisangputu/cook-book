@@ -11,14 +11,14 @@ const MyRecipes = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`http://localhost:8800/profile/${id}/myrecipes`, {
+                const response = await fetch(`https://taste-book-api.onrender.com/profile/${id}/myrecipes`, {
                     credentials: 'include'
                 });
 
                 if (response.status === 401) {
                     // Handle unauthorized access
                     console.error("Unauthorized access");
-                    navigate('http://localhost:5173/login');
+                    navigate('/login');
                     return;
                 }
 
@@ -30,7 +30,7 @@ const MyRecipes = () => {
         };
 
         fetchData();
-    }, [id]);
+    }, [id, navigate]);
 
     const currentUser = getCurrentUser();
     if (!currentUser) {
