@@ -45,9 +45,9 @@ const recipeSchema = new Schema({
     timestamps: true
 });
 
-recipeSchema.pre('remove', async function(next) {
+recipeSchema.pre('deleteOne', { document: true, query: false }, async function(next) {
     try {
-        await Review.deleteMany({ recipe: this._id });
+        await mongoose.model('Review').deleteMany({ recipe: this._id });
         next();
     } catch (err) {
         next(err);
