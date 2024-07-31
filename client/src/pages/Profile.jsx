@@ -37,7 +37,7 @@ const Profile = () => {
 
         fetchData();
 
-    }, [id, navigate]);
+    }, [id]);
 
     const currentUser = getCurrentUser();
     if (!currentUser) {
