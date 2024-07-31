@@ -30,14 +30,16 @@ export const login = async (req, res, next) => {
 
         const isCorrect = bcrypt.compareSync(req.body.password, user.password);
         if (!isCorrect) return next(createError(400, "Wrong password or username"));
-
+        const key = process.env.JWT_KEY;
         const token = jwt.sign(
             {
                 id: user._id,
             },
-            process.env.JWT_KEY,
+            key,
             { expiresIn: '1h' } // Token expires in 1 hour
         );
+        console.log(key);
+        console.log(token);
 
         const { password, ...info } = user._doc;
         res.cookie("accessToken", token, {
@@ -47,7 +49,7 @@ export const login = async (req, res, next) => {
             sameSite: 'strict',
             maxAge: 60 * 60 * 1000, // 1 hour
         }).status(200).send(info);
-        console.log(res.cookie);
+
         //console.log("User logged in");
     } catch (err) {
         console.error(err);
