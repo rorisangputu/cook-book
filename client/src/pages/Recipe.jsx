@@ -35,17 +35,17 @@ const Recipe = () => {
     }, [id, navigate]);
 
     const handleDelete = async () => {
-        if (window.confirm("Are you sure you want to delete this recipe?")) {
-            try {
-                const res = await newRequest.delete(`recipes/recipe/${id}`);
-                if (res.status === 200) {
-                    alert('Recipe deleted successfully.');
-                    navigate('/'); // Redirect to home after deletion
-                }
-            } catch (err) {
-                console.error('Error deleting recipe:', err);
+
+        try {
+            const res = await newRequest.delete(`recipes/deleterecipe/${id}`);
+            if (res.status === 200) {
+                alert('Recipe deleted successfully.');
+                navigate('/'); // Redirect to home after deletion
             }
+        } catch (err) {
+            console.error('Error deleting recipe:', err);
         }
+
     };
 
 
