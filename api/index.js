@@ -31,7 +31,7 @@ app.use(cookieParser());
 
 //CORS Config
 const corsOptions = {
-    origin: "https://taste-book-client.onrender.com/",
+    origin: "https://taste-book-client.onrender.com",
     credentials: true,
 }
 app.use(cors(corsOptions));
