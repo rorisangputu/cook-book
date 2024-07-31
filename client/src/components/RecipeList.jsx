@@ -1,14 +1,21 @@
 import { useEffect, useState } from 'react'
 import RecipeItem from './RecipeItem'
+import newRequest from '../utils/newRequest';
 
 const RecipeList = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('https://taste-book-api.onrender.com/recipes')
-            .then(res => res.json())
-            .then(data => setRecipes(data))
-            .catch(err => console.error("Error fetching recipes:", err));
+        const fetchData = async () => {
+            const res = await newRequest.get('recipes');
+            if (res.status === 401) {
+                console.log("Cant find recipes")
+            }
+            const data = res.data;
+            setRecipes(data);
+        }
+        fetchData();
+
     }, []);
 
     return (

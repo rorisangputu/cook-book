@@ -3,6 +3,7 @@ import RecipeItem from '../RecipeItem';
 import { useParams } from 'react-router-dom';
 import getCurrentUser from '../../utils/getCurrentUser';
 import { useNavigate } from 'react-router-dom';
+import newRequest from '../../utils/newRequest';
 
 const MyRecipes = () => {
     const [recipes, setRecipes] = useState([]);
@@ -11,9 +12,7 @@ const MyRecipes = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://taste-book-api.onrender.com/profile/${id}/myrecipes`, {
-                    credentials: 'include'
-                });
+                const response = await newRequest.get(`profile/${id}/myrecipes`);
 
                 if (response.status === 401) {
                     // Handle unauthorized access
@@ -22,7 +21,7 @@ const MyRecipes = () => {
                     return;
                 }
 
-                const recipes = await response.json();
+                const recipes = await response.data;
                 setRecipes(recipes);
             } catch (error) {
                 console.error('Error fetching user:', error);

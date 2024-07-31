@@ -3,6 +3,7 @@ import { MdOutlineDelete } from "react-icons/md";
 //import newRequest from "../../utils/newRequest";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import newRequest from '../../utils/newRequest';
 import getCurrentUser from "../../utils/getCurrentUser";
 const ReviewItem = ({ review, onDelete }) => {
     const currentUser = getCurrentUser();
@@ -10,28 +11,23 @@ const ReviewItem = ({ review, onDelete }) => {
     const [error, setError] = useState(null);
     const navigate = useNavigate();
     //console.log(review.user._id, currentUser._id)
-    const handleDelete = (e) => {
+    const handleDelete = async (e) => {
         e.preventDefault();
 
         if (currentUser._id === review.user._id) {
-            fetch(`https://taste-book-api.onrender.com/reviews/deleteReview/${review._id}`, {
-                method: 'DELETE',
-                credentials: 'include'
-            })
-                .then(response => {
-                    if (response.ok) {
-                        onDelete(review._id); // Notify the parent component to remove the review
-                    } if (response.status === 401) {
-                        alert('Session expired or unauthorized. Please log in again.');
-                        navigate('/login');
-                    } else {
-                        return response.json().then(err => { throw new Error(err.message); });
-                    }
-                })
-                .catch(error => {
-                    setError('Error deleting review: ' + error.message);
-                    console.error('Error deleting review:', error);
-                });
+            const res = await newRequest.delete(`reviews/deleteReview/${review._id}`)
+
+            if (res.ok) {
+                onDelete(review._id); // Notify the parent component to remove the review
+
+            } else if (res.status === 401) {
+                alert('Session expired or unauthorized. Please log in again.');
+                navigate('/login');
+            } else {
+                console.log("Error deleting review")
+            }
+
+            window.location.reload();
         } else {
             setError('You are not the owner of review!')
         }

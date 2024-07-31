@@ -3,8 +3,8 @@ import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
 const newRequest = axios.create({
-    //baseURL: 'http://localhost:8800/',
-    baseURL: 'https://taste-book-api.onrender.com',
+    baseURL: 'http://localhost:8800/',
+    //baseURL: 'https://taste-book-api.onrender.com/',
     withCredentials: true
 });
 

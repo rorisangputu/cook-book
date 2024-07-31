@@ -1,22 +1,30 @@
 import { useEffect, useState } from 'react'
 import RecipeItem from './RecipeItem'
 import { Link } from 'react-router-dom';
+import newRequest from '../utils/newRequest';
 
 const Popular = () => {
     const [recipes, setRecipes] = useState([]);
 
     useEffect(() => {
-        fetch('https://taste-book-api.onrender.com/recipes/popularRecipes')
-            .then(res => res.json())
-            .then(data => setRecipes(data))
-            .catch(err => console.error("Error fetching recipes:", err));
+        const fetchData = async () => {
+            try {
+                const res = await newRequest.get('recipes/popularRecipes');
+                if (res.status === 401) {
+                    console.error("Error fetching recipes");
+                }
+                const data = res.data;
+
+                setRecipes(data);
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        fetchData();
+
     }, []);
-    // useEffect(() => {
-    //     fetch('http://localhost:8800/recipes/popularRecipes')
-    //         .then(res => res.json())
-    //         .then(data => setRecipes(data))
-    //         .catch(err => console.error("Error fetching recipes:", err));
-    // }, []);
+
     return (
         <div className="w-full bg-[#f7f7f7]">
             <div className="w-[90%] md:container lg:w-[90%] xl:container mx-auto py-2">

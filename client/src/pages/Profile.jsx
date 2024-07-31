@@ -2,6 +2,7 @@ import { Link, Outlet, useParams, useNavigate } from 'react-router-dom';
 import foodpic from '../assets/foodpic.jpg';
 import getCurrentUser from "../utils/getCurrentUser";
 import { useState, useEffect } from 'react';
+import newRequest from '../utils/newRequest';
 
 const Profile = () => {
     const [user, setUser] = useState(null);
@@ -10,12 +11,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch(`https://taste-book-api.onrender.com/profile/${id}`, {
-                    credentials: 'include'
-                });
-                // const response = await fetch(`http://localhost:8800/profile/${id}`, {
-                //     credentials: 'include'
-                // });
+                const response = await newRequest.get(`profile/${id}`);
 
                 if (response.status === 401) {
                     // Handle unauthorized access
@@ -24,7 +20,7 @@ const Profile = () => {
                     return;
                 }
 
-                const user = await response.json();
+                const user = await response.data;
                 setUser(user);
                 // Navigate to 'myrecipes' if it's not the current location
                 if (location.pathname === `/profile/${id}`) {

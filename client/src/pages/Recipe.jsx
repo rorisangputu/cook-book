@@ -16,16 +16,23 @@ const Recipe = () => {
     const { id } = useParams();
 
     useEffect(() => {
+        const fetchData = async () => {
+            // In your API call or server response handler
+            const res = await newRequest.get(`recipes/recipe/${id}`);
+            if (res.status === 401) {
+                // Handle unauthorized access
+                console.error("Error fetching Data");
+                navigate('/recipes');
+                return;
+            }
+            const recipeData = await res.data;
+            setRecipeDet(recipeData);
+        }
         // In your API call or server response handler
-        fetch(`https://taste-book-api.onrender.com/recipes/recipe/${id}`)
-            .then(response => response.json())
-            .then(data => {
-                //console.log('Recipe Data:', data); // Check the full data structure here
-                setRecipeDet(data);
-            })
-            .catch(error => console.error('Error fetching recipe:', error));
 
-    }, [id]);
+        fetchData();
+
+    }, [id, navigate]);
 
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this recipe?")) {

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import ReviewItem from "./ReviewItem";
+import newRequest from "../../utils/newRequest";
 
 const Review = ({ id }) => {
 
@@ -9,13 +10,13 @@ const Review = ({ id }) => {
 
     useEffect(() => {
         if (id) { // Check if id exists
-            fetch(`https://taste-book-api.onrender.com/reviews/${id}`)
-                .then(res => res.json())
-                .then(data => {
-                    //console.log(data); // Check the response
-                    setReviews(data);
-                })
-                .catch(err => console.error('Error fetching reviews:', err));
+            const fetchData = async () => {
+                const res = await newRequest.get(`reviews/${id}`)
+                const data = res.data;
+                setReviews(data);
+
+            }
+            fetchData();
         }
     }, [id]);
 
