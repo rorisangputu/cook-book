@@ -42,7 +42,8 @@ export const login = async (req, res, next) => {
         const { password, ...info } = user._doc;
         res.cookie("accessToken", token, {
             httpOnly: true,
-            secure: process.env.NODE_ENV === 'production', // Ensure secure cookie in production
+            secure: true, // Ensure secure cookie in production
+            //secure: process.env.NODE_ENV === 'production', // Ensure secure cookie in production
             sameSite: 'strict',
             maxAge: 60 * 60 * 1000, // 1 hour
         }).status(200).send(info);
