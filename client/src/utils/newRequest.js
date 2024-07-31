@@ -3,7 +3,12 @@ import axios from 'axios';
 // import { useNavigate } from 'react-router-dom';
 
 const newRequest = axios.create({
+<<<<<<< HEAD
     baseURL: 'https://taste-book-api.onrender.com',
+=======
+    baseURL: 'https://taste-book-api.onrender.com/',
+
+>>>>>>> cf74f47 (made changes)
     withCredentials: true
 });
 
