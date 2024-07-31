@@ -47,7 +47,7 @@ export const login = async (req, res, next) => {
             sameSite: 'strict',
             maxAge: 60 * 60 * 1000, // 1 hour
         }).status(200).send(info);
-
+        console.log(res.cookie);
         //console.log("User logged in");
     } catch (err) {
         console.error(err);
