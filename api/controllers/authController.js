@@ -43,11 +43,11 @@ export const login = async (req, res, next) => {
         const { password, ...info } = user._doc;
         res.cookie("accessToken", token, {
             httpOnly: true,
-            secure: true, // Ensure secure cookie in production
-            //secure: process.env.NODE_ENV === 'production', // Ensure secure cookie in production
-            sameSite: 'strict',
-            maxAge: 60 * 60 * 1000, // 1 hour
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: process.env.NODE_ENV === 'production' ? 'None' : 'Lax',
+            maxAge: 60 * 60 * 1000,
         }).status(200).send(info);
+
 
         //console.log("User logged in");
     } catch (err) {
