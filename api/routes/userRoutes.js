@@ -4,8 +4,8 @@ import { getUser, editprofile, getUserRecipes } from '../controllers/userControl
 const router = express.Router();
 
 router.get('/:id', verifyToken, getUser)
-router.put('/:id/editprofile', verifyToken, editprofile)
-router.get('/:id/myrecipes', verifyToken, getUserRecipes)
+router.put('/:id/editprofile', editprofile)
+router.get('/:id/myrecipes', getUserRecipes)
 
 
 

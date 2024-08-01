@@ -38,8 +38,7 @@ export const login = async (req, res, next) => {
             key,
             { expiresIn: '1h' } // Token expires in 1 hour
         );
-        console.log(key);
-        console.log(token);
+        
 
         const { password, ...info } = user._doc;
         res.cookie("accessToken", token, {
